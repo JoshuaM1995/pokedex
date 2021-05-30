@@ -7,6 +7,7 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { HomeScreen } from '../screens';
+import { padding } from '../utils/react-native-helpers';
 
 /**
  * This type allows TypeScript to know what routes are defined in this navigator
@@ -31,7 +32,7 @@ export function MainNavigator() {
   return (
     <Stack.Navigator
       screenOptions={{
-        cardStyle: { backgroundColor: 'transparent' },
+        cardStyle: { backgroundColor: 'transparent', ...padding(0, 20) },
         headerShown: false,
       }}
     >
