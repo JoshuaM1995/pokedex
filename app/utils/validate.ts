@@ -1,26 +1,26 @@
-const ValidateJS = require("validate.js")
+const ValidateJS = require('validate.js');
 
-// HACK(steve): wierd typescript situation because of strange typings
-const Validate: any = ValidateJS.default ? ValidateJS.default : ValidateJS
+// HACK(steve): weird typescript situation because of strange typings
+const Validate: any = ValidateJS.default ? ValidateJS.default : ValidateJS;
 
 /**
  * Validates that 1 attribute doesn't appear in another's attributes content.
  */
 Validate.validators.excludes = function custom(value, options, key, attributes) {
-  const list = attributes[options.attribute] || []
+  const list = attributes[options.attribute] || [];
   if (value && list.includes(value)) {
-    return options.message || `${value} is in the list`
+    return options.message || `${value} is in the list`;
   }
-}
+};
 
 /**
  * Validates that another attribute isn't true.
  */
 Validate.validators.tripped = function custom(value, options, key, attributes) {
   if (value && attributes[options.attribute] === true) {
-    return options.message || `${options.attribute} is true`
+    return options.message || `${options.attribute} is true`;
   }
-}
+};
 
 /**
  * Defines the rules for validating.
@@ -70,8 +70,8 @@ export interface ValidationErrors {
  * @param data The object to validate.
  */
 export function validate(rules: ValidationRules, data: Record<string, unknown>): ValidationErrors {
-  if (typeof data !== "object") {
-    return {} as ValidationErrors
+  if (typeof data !== 'object') {
+    return {} as ValidationErrors;
   }
-  return Validate(data, rules, { fullMessages: false }) || {}
+  return Validate(data, rules, { fullMessages: false }) || {};
 }
