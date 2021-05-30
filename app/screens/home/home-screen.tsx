@@ -2,9 +2,9 @@ import React from 'react';
 import { View } from 'react-native';
 import { Text } from '../../components';
 
-export const WelcomeScreen = () => {
+export const HomeScreen = () => {
   return (
-    <View testID="WelcomeScreen">
+    <View testID="HomeScreen">
       <Text>Hello, world!</Text>
     </View>
   );
