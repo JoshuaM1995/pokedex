@@ -49,6 +49,15 @@ export const color = {
    */
   error: palette.angry,
 
+  homePageCard: {
+    green: palette.green,
+    red: palette.red,
+    blue: palette.blue,
+    yellow: palette.yellow,
+    purple: palette.purple,
+    brown: palette.brown,
+  },
+
   /**
    * Storybook background for Text stories, or any stories where
    * the text color is color.text, which is white by default, and does not show
