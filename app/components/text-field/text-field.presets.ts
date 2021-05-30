@@ -4,7 +4,7 @@ import { color, spacing, typography } from '../../theme';
 import { margin, padding } from '../../utils/react-native-helpers';
 
 const BASE_VIEW: ViewStyle = {
-  ...margin(spacing[4], 0),
+  ...margin(spacing[3], 0),
 };
 
 // the base styling for the TextInput

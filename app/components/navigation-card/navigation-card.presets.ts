@@ -2,8 +2,6 @@ import { TextStyle, ViewStyle } from 'react-native';
 import { color, typography } from '../../theme';
 import { padding } from '../../utils/react-native-helpers';
 
-// boxShadow: '0px 20px 20px 0px rgba(79,194,166,0.6)',
-
 const BASE_VIEW: ViewStyle = {
   justifyContent: 'center',
   borderRadius: 12,
