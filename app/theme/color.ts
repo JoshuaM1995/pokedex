@@ -49,6 +49,9 @@ export const color = {
    */
   error: palette.angry,
 
+  textInputPlaceholder: palette.mediumGrey,
+  textInputBg: palette.lightestGrey,
+
   homePageCard: {
     green: palette.green,
     red: palette.red,

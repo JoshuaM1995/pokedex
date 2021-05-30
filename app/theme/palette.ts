@@ -7,6 +7,8 @@ export const palette = {
   orangeDarker: '#EB9918',
   lightGrey: '#939AA4',
   lighterGrey: '#CDD4DA',
+  lightestGrey: '#F4F2F5',
+  mediumGrey: '#919596',
   angry: '#dd3333',
   deepPurple: '#5D2555',
   green: '#4FC2A6',

@@ -5,13 +5,14 @@ import { NavigationCard, Text, TextField } from '../../components';
 import { padding } from '../../utils/react-native-helpers';
 
 export const HomeScreen = () => {
-  const [search, setSearch] = useState<any>();
+  const [search, setSearch] = useState<string>();
 
   return (
     <View testID="HomeScreen">
       <Text preset="header">What Pokemon are you looking for?</Text>
 
       <TextField
+        preset="search"
         onChangeText={(value) => setSearch(value)}
         value={search}
         placeholderTx="homeScreen.searchPlaceholder"

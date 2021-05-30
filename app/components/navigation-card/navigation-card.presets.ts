@@ -19,6 +19,7 @@ const BASE_VIEW: ViewStyle = {
 const BASE_TEXT: TextStyle = {
   fontFamily: typography.primary,
   fontSize: 14,
+  fontWeight: 'bold',
   color: color.palette.white,
 };
 

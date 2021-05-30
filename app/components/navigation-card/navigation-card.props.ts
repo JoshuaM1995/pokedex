@@ -4,6 +4,7 @@ import {
 import { ReactNode } from 'react';
 import { TxKeyPath } from '../../i18n';
 import { ButtonPresetNames } from '../button/button.presets';
+import { NavigationCardPresetNames } from './navigation-card.presets';
 
 export interface NavigationCardProps extends PressableProps {
   /**
@@ -29,7 +30,7 @@ export interface NavigationCardProps extends PressableProps {
   /**
    * One of the different types of text presets.
    */
-  preset?: ButtonPresetNames
+  preset?: NavigationCardPresetNames
 
   /**
    * One of the different types of text presets.
