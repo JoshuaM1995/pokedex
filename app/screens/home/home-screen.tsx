@@ -19,7 +19,7 @@ export const HomeScreen = () => {
         ...padding(0, 15, 50, 15),
       }}
       >
-        <Text preset="h3" style={{ marginTop: 100, marginBottom: 10, paddingLeft: 15 }}>
+        <Text preset="h3" style={{ marginTop: 25, marginBottom: 10, paddingLeft: 15 }}>
           What Pokemon are you looking for?
         </Text>
 

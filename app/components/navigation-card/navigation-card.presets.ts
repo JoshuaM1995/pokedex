@@ -4,7 +4,7 @@ import { padding } from '../../utils/react-native-helpers';
 
 const BASE_VIEW: ViewStyle = {
   justifyContent: 'center',
-  borderRadius: 12,
+  borderRadius: 16,
   shadowOffset: {
     width: 0,
     height: 6,
