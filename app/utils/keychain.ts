@@ -1,4 +1,4 @@
-import * as ReactNativeKeychain from "react-native-keychain"
+import * as ReactNativeKeychain from 'react-native-keychain';
 
 /**
  * Saves some credentials securely.
@@ -9,11 +9,10 @@ import * as ReactNativeKeychain from "react-native-keychain"
  */
 export async function save(username: string, password: string, server?: string) {
   if (server) {
-    await ReactNativeKeychain.setInternetCredentials(server, username, password)
-    return true
-  } else {
-    return ReactNativeKeychain.setGenericPassword(username, password)
+    await ReactNativeKeychain.setInternetCredentials(server, username, password);
+    return true;
   }
+  return ReactNativeKeychain.setGenericPassword(username, password);
 }
 
 /**
@@ -23,28 +22,26 @@ export async function save(username: string, password: string, server?: string) 
  */
 export async function load(server?: string) {
   if (server) {
-    const creds = await ReactNativeKeychain.getInternetCredentials(server)
+    const creds = await ReactNativeKeychain.getInternetCredentials(server);
     return {
       username: creds ? creds.username : null,
       password: creds ? creds.password : null,
       server,
-    }
-  } else {
-    const creds = await ReactNativeKeychain.getGenericPassword()
-    if (typeof creds === "object") {
-      return {
-        username: creds.username,
-        password: creds.password,
-        server: null,
-      }
-    } else {
-      return {
-        username: null,
-        password: null,
-        server: null,
-      }
-    }
+    };
   }
+  const creds = await ReactNativeKeychain.getGenericPassword();
+  if (typeof creds === 'object') {
+    return {
+      username: creds.username,
+      password: creds.password,
+      server: null,
+    };
+  }
+  return {
+    username: null,
+    password: null,
+    server: null,
+  };
 }
 
 /**
@@ -54,10 +51,9 @@ export async function load(server?: string) {
  */
 export async function reset(server?: string) {
   if (server) {
-    await ReactNativeKeychain.resetInternetCredentials(server)
-    return true
-  } else {
-    const result = await ReactNativeKeychain.resetGenericPassword()
-    return result
+    await ReactNativeKeychain.resetInternetCredentials(server);
+    return true;
   }
+  const result = await ReactNativeKeychain.resetGenericPassword();
+  return result;
 }

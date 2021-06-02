@@ -7,10 +7,8 @@
   "errors": {
     "invalidEmail": "Invalid email address."
   },
-  "welcomeScreen": {
-    "poweredBy": "POWERED BY IGNITE",
-    "readyForLaunch": "Ready for launch.",
-    "continue": "CONTINUE"
+  "homeScreen": {
+    "searchPlaceholder": "Search Pokemon, Move, Ability, etc."
   },
   "demoScreen": {
     "howTo": "HOW TO",
