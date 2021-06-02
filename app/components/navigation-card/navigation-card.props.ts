@@ -3,7 +3,6 @@ import {
 } from 'react-native';
 import { ReactNode } from 'react';
 import { TxKeyPath } from '../../i18n';
-import { ButtonPresetNames } from '../button/button.presets';
 import { NavigationCardPresetNames } from './navigation-card.presets';
 
 export interface NavigationCardProps extends PressableProps {
