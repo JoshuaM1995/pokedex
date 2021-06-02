@@ -6,8 +6,8 @@
  */
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import { HomeScreen } from '../screens';
-import { padding } from '../utils/react-native-helpers';
+import { HomeScreen, PokedexScreen } from '../screens';
+import { color } from '../theme';
 
 /**
  * This type allows TypeScript to know what routes are defined in this navigator
@@ -23,6 +23,12 @@ import { padding } from '../utils/react-native-helpers';
  */
 export type PrimaryParamList = {
   Home: undefined;
+  Pokedex: undefined;
+}
+
+export enum Route {
+  Home = 'Home',
+  Pokedex = 'Pokedex',
 }
 
 // Documentation: https://reactnavigation.org/docs/stack-navigator/
@@ -33,10 +39,23 @@ export function MainNavigator() {
     <Stack.Navigator
       screenOptions={{
         cardStyle: { backgroundColor: 'transparent' },
-        headerShown: false,
+        headerShown: true,
       }}
     >
-      <Stack.Screen name="Home" component={HomeScreen} />
+      <Stack.Screen name={Route.Home} component={HomeScreen} />
+      <Stack.Screen
+        name={Route.Pokedex}
+        component={PokedexScreen}
+        options={{
+          headerStyle: {
+            backgroundColor: color.palette.green,
+          },
+          headerTintColor: '#fff',
+          headerTitleStyle: {
+            fontWeight: 'bold',
+          },
+        }}
+      />
     </Stack.Navigator>
   );
 }
