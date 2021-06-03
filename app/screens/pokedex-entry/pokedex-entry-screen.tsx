@@ -1,16 +1,14 @@
 import React from 'react';
-import { ViewStyle } from 'react-native';
 import {
   RouteProp, useNavigation, useRoute, NavigationProp,
 } from '@react-navigation/native';
-import { Screen, Text } from '../../components';
+import { Screen, Text, Section } from '../../components';
 import { color } from '../../theme';
 import { PrimaryParamList, RouteName } from '../../navigators';
+import { padding } from '../../utils/react-native-helpers';
 
-const ROOT: ViewStyle = {
-  backgroundColor: color.palette.black,
-  flex: 1,
-};
+const PokemonHeaderSection = Section;
+const PokemonInfoSection = Section;
 
 export const PokedexEntryScreen = () => {
   const navigation = useNavigation<NavigationProp<PrimaryParamList>>();
@@ -29,8 +27,24 @@ export const PokedexEntryScreen = () => {
   });
 
   return (
-    <Screen style={ROOT} preset="scroll">
-      <Text preset="header" text="">{`Pokedex entry #${pokemonId.toString().padStart(3, '0')}`}</Text>
+    <Screen preset="scroll">
+      <PokemonHeaderSection style={{
+        backgroundColor: color.palette.green,
+        ...padding(0, 15, 80, 15),
+      }}
+      >
+        <Text preset="h3" style={{ color: color.palette.white }}>Bulbasaur</Text>
+      </PokemonHeaderSection>
+
+      <PokemonInfoSection style={{
+        backgroundColor: color.background,
+        borderTopLeftRadius: 30,
+        borderTopRightRadius: 30,
+        marginTop: -30,
+      }}
+      >
+        <Text preset="header" text="">Some info here...</Text>
+      </PokemonInfoSection>
     </Screen>
   );
 };
