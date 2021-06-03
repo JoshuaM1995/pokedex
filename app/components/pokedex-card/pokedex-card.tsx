@@ -2,17 +2,16 @@ import _ from 'lodash';
 import * as React from 'react';
 import { PropsWithChildren } from 'react';
 import { ImageBackground, Pressable, View } from 'react-native';
-import { Col, Grid } from 'react-native-easy-grid';
 import { Text } from '..';
 import {
-  BASE_TEXT, IMAGE_BACKGROUND, TAG_TEXT, TAG_VIEW, viewPresets,
+  BASE_TEXT, TAG_TEXT, TAG_VIEW, viewPresets,
 } from './pokedex-card.presets';
 import { PokedexCardProps } from './pokedex-card.props';
 
 export const PokedexCard = ({
   types,
   id,
-  preset = 'green',
+  preset,
   tx,
   text,
   style: styleOverride,
@@ -36,7 +35,6 @@ export const PokedexCard = ({
           position: 'relative',
         }}
         imageStyle={{
-          // resizeMode: 'cover',
           position: 'absolute',
           width: 75,
           height: 75,

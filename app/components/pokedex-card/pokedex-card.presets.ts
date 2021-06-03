@@ -8,12 +8,13 @@ const BASE_VIEW: ViewStyle = {
   justifyContent: 'center',
   minHeight: 170,
   borderRadius: 16,
+  shadowColor: color.palette.mediumGrey,
   shadowOffset: {
     width: 0,
-    height: 6,
+    height: 3,
   },
-  shadowOpacity: 0.5,
-  shadowRadius: 8,
+  shadowOpacity: 0.4,
+  shadowRadius: 5,
   ...padding(25, 20),
 };
 
@@ -44,12 +45,12 @@ export const TAG_TEXT: TextStyle = {
 };
 
 export const viewPresets: Record<string, ViewStyle> = {
-  green: { ...BASE_VIEW, backgroundColor: color.palette.green, shadowColor: color.palette.green } as ViewStyle,
-  red: { ...BASE_VIEW, backgroundColor: color.palette.red, shadowColor: color.palette.red } as ViewStyle,
-  blue: { ...BASE_VIEW, backgroundColor: color.palette.blue, shadowColor: color.palette.blue } as ViewStyle,
-  yellow: { ...BASE_VIEW, backgroundColor: color.palette.yellow, shadowColor: color.palette.yellow } as ViewStyle,
-  purple: { ...BASE_VIEW, backgroundColor: color.palette.purple, shadowColor: color.palette.purple } as ViewStyle,
-  brown: { ...BASE_VIEW, backgroundColor: color.palette.brown, shadowColor: color.palette.brown } as ViewStyle,
+  green: { ...BASE_VIEW, backgroundColor: color.palette.green } as ViewStyle,
+  red: { ...BASE_VIEW, backgroundColor: color.palette.red } as ViewStyle,
+  blue: { ...BASE_VIEW, backgroundColor: color.palette.blue } as ViewStyle,
+  yellow: { ...BASE_VIEW, backgroundColor: color.palette.yellow } as ViewStyle,
+  purple: { ...BASE_VIEW, backgroundColor: color.palette.purple } as ViewStyle,
+  brown: { ...BASE_VIEW, backgroundColor: color.palette.brown } as ViewStyle,
 };
 
 export type PokedexCardPresetNames = keyof typeof viewPresets;

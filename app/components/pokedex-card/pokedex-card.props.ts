@@ -34,7 +34,7 @@ export interface PokedexCardProps extends Omit<PressableProps, 'children'> {
   /**
    * One of the different types of text presets.
    */
-  preset?: PokedexCardPresetNames
+  preset: PokedexCardPresetNames
 
   /**
    * One of the different types of text presets.
