@@ -1,17 +1,17 @@
 import _ from 'lodash';
 import * as React from 'react';
 import { PropsWithChildren } from 'react';
-import { Pressable, View } from 'react-native';
+import { ImageBackground, Pressable, View } from 'react-native';
 import { Col, Grid } from 'react-native-easy-grid';
 import { Text } from '..';
 import {
-  BASE_TEXT, TAG_TEXT, TAG_VIEW, viewPresets,
+  BASE_TEXT, IMAGE_BACKGROUND, TAG_TEXT, TAG_VIEW, viewPresets,
 } from './pokedex-card.presets';
 import { PokedexCardProps } from './pokedex-card.props';
 
 export const PokedexCard = ({
   types,
-  image,
+  id,
   preset = 'green',
   tx,
   text,
@@ -29,18 +29,32 @@ export const PokedexCard = ({
 
   return (
     <Pressable style={viewStyles} {...pressableProps}>
-      <Grid>
-        <Col>
-          {content}
+      <ImageBackground
+        source={require(`../../../assets/images/pokemon/${id}.png`)}
+        style={{
+          flex: 1,
+          position: 'relative',
+        }}
+        imageStyle={{
+          // resizeMode: 'cover',
+          position: 'absolute',
+          width: 75,
+          height: 75,
+          left: '50%',
+          top: '50%',
+        }}
+      >
+        {content}
 
-          {types.map((type) => (
-            <View style={TAG_VIEW}>
+        <View style={{ width: '50%' }}>
+          {types.map((type, index) => (
+            // eslint-disable-next-line react/no-array-index-key
+            <View key={index} style={TAG_VIEW}>
               <Text style={TAG_TEXT}>{_.upperFirst(type)}</Text>
             </View>
           ))}
-        </Col>
-        <Col>Image here</Col>
-      </Grid>
+        </View>
+      </ImageBackground>
     </Pressable>
   );
 };

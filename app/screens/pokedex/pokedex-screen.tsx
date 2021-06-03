@@ -10,26 +10,53 @@ export const PokedexScreen = () => {
       <Grid>
         <Row>
           <Col>
-            <PokedexCard text="Bulbasaur" types={[PokemonType.Grass, PokemonType.Poison]} image="" />
+            <PokedexCard
+              id={1}
+              text="Bulbasaur"
+              types={[PokemonType.Grass, PokemonType.Poison]}
+            />
           </Col>
           <Col>
-            <PokedexCard text="Ivysaur" types={[PokemonType.Grass, PokemonType.Poison]} image="" />
+            <PokedexCard
+              id={2}
+              text="Ivysaur"
+              types={[PokemonType.Grass, PokemonType.Poison]}
+            />
           </Col>
         </Row>
         <Row>
           <Col>
-            <PokedexCard text="Venasaur" types={[PokemonType.Grass, PokemonType.Poison]} image="" />
+            <PokedexCard
+              id={3}
+              text="Venasaur"
+              types={[PokemonType.Grass, PokemonType.Poison]}
+            />
           </Col>
           <Col>
-            <PokedexCard preset="red" text="Charmander" types={[PokemonType.Fire]} image="" />
+            <PokedexCard
+              id={4}
+              preset="red"
+              text="Charmander"
+              types={[PokemonType.Fire]}
+            />
           </Col>
         </Row>
         <Row>
           <Col>
-            <PokedexCard preset="red" text="Charmeleon" types={[PokemonType.Fire]} image="" />
+            <PokedexCard
+              id={5}
+              preset="red"
+              text="Charmeleon"
+              types={[PokemonType.Fire]}
+            />
           </Col>
           <Col>
-            <PokedexCard preset="red" text="Charizard" types={[PokemonType.Fire]} image="" />
+            <PokedexCard
+              id={6}
+              preset="red"
+              text="Charizard"
+              types={[PokemonType.Fire]}
+            />
           </Col>
         </Row>
       </Grid>

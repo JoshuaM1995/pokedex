@@ -1,4 +1,4 @@
-import { TextStyle, ViewStyle } from 'react-native';
+import { ImageStyle, TextStyle, ViewStyle } from 'react-native';
 import { color, typography } from '../../theme';
 import { padding } from '../../utils/react-native-helpers';
 
@@ -6,6 +6,7 @@ const BASE_VIEW: ViewStyle = {
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'center',
+  minHeight: 170,
   borderRadius: 16,
   shadowOffset: {
     width: 0,
@@ -14,6 +15,12 @@ const BASE_VIEW: ViewStyle = {
   shadowOpacity: 0.5,
   shadowRadius: 8,
   ...padding(25, 20),
+};
+
+export const IMAGE_BACKGROUND: ImageStyle = {
+  flex: 1,
+  resizeMode: 'cover',
+  justifyContent: 'flex-end',
 };
 
 export const BASE_TEXT: TextStyle = {
@@ -33,6 +40,7 @@ export const TAG_VIEW: ViewStyle = {
 export const TAG_TEXT: TextStyle = {
   color: color.palette.white,
   textAlign: 'center',
+  fontSize: 12,
 };
 
 export const viewPresets: Record<string, ViewStyle> = {

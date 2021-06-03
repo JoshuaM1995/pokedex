@@ -9,7 +9,7 @@ import { PokemonType } from '../../enum';
 export interface PokedexCardProps extends Omit<PressableProps, 'children'> {
   types: [PokemonType, PokemonType?];
 
-  image: string;
+  id: number;
 
   /**
    * Text which is looked up via i18n.
