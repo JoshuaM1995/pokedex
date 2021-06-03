@@ -7,7 +7,7 @@ import {
 } from '../../components';
 import { padding } from '../../utils/react-native-helpers';
 import { color } from '../../theme';
-import { Route } from '../../navigators';
+import { RouteName } from '../../navigators';
 
 export const HomeScreen = () => {
   const [search, setSearch] = useState<string>('');
@@ -36,7 +36,7 @@ export const HomeScreen = () => {
 
         <Grid style={{ ...padding(10) }}>
           <Col style={{ paddingRight: 10 }}>
-            <NavigationCard preset="green" onPress={() => navigation.navigate(Route.Pokedex)}>Pokedex</NavigationCard>
+            <NavigationCard preset="green" onPress={() => navigation.navigate(RouteName.PokedexIndex)}>Pokedex</NavigationCard>
           </Col>
           <Col>
             <NavigationCard preset="red">Moves</NavigationCard>
