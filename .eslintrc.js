@@ -29,6 +29,8 @@ module.exports = {
     'arrow-body-style': 'off',
     'max-len': ['error', { code: 120 }],
     'react/jsx-filename-extension': [1, { extensions: ['.tsx'] }],
+    'global-require': 'off',
+    'import/no-dynamic-require': 'off',
   },
   settings: {
     'import/resolver': {

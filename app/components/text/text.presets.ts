@@ -15,6 +15,13 @@ const BOLD: TextStyle = {
   fontWeight: 'bold',
 };
 
+const HEADER = {
+  ...BASE,
+  fontWeight: 'bold',
+  marginTop: 20,
+  marginLeft: 15,
+};
+
 /**
  * All the variations of text styling within the app.
  *
@@ -34,7 +41,7 @@ export const presets = {
   /**
    * Large headers.
    */
-  header: { ...BASE, fontSize: 24, fontWeight: 'bold' } as TextStyle,
+  header: HEADER as TextStyle,
 
   /**
    * Field labels that appear on forms above the inputs.
@@ -46,12 +53,12 @@ export const presets = {
    */
   secondary: { ...BASE, fontSize: 9, color: color.dim } as TextStyle,
 
-  h1: { ...BASE, ...BOLD, fontSize: 36 },
-  h2: { ...BASE, ...BOLD, fontSize: 32 },
-  h3: { ...BASE, ...BOLD, fontSize: 28 },
-  h4: { ...BASE, ...BOLD, fontSize: 24 },
-  h5: { ...BASE, ...BOLD, fontSize: 20 },
-  h6: { ...BASE, ...BOLD, fontSize: 16 },
+  h1: { ...HEADER, ...BOLD, fontSize: typography.sizes.h1 },
+  h2: { ...HEADER, ...BOLD, fontSize: typography.sizes.h2 },
+  h3: { ...HEADER, ...BOLD, fontSize: typography.sizes.h3 },
+  h4: { ...HEADER, ...BOLD, fontSize: typography.sizes.h4 },
+  h5: { ...HEADER, ...BOLD, fontSize: typography.sizes.h5 },
+  h6: { ...HEADER, ...BOLD, fontSize: typography.sizes.h6 },
 };
 
 /**
