@@ -24,11 +24,16 @@ export const IMAGE_BACKGROUND: ImageStyle = {
   justifyContent: 'flex-end',
 };
 
-export const BASE_TEXT: TextStyle = {
+export const POKEMON_NAME_TEXT: TextStyle = {
   color: color.palette.white,
   fontFamily: typography.primary,
   fontWeight: 'bold',
   marginBottom: 15,
+};
+
+export const POKEMON_NUMBER_TEXT: TextStyle = {
+  textAlign: 'right',
+  color: 'rgba(0, 0, 0, 0.3)',
 };
 
 export const TAG_VIEW: ViewStyle = {

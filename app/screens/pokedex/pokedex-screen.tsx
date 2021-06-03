@@ -13,7 +13,7 @@ export const PokedexScreen = () => {
             <PokedexCard
               id={1}
               preset="green"
-              text="Bulbasaur"
+              pokemonName="Bulbasaur"
               types={[PokemonType.Grass, PokemonType.Poison]}
             />
           </Col>
@@ -21,7 +21,7 @@ export const PokedexScreen = () => {
             <PokedexCard
               id={2}
               preset="green"
-              text="Ivysaur"
+              pokemonName="Ivysaur"
               types={[PokemonType.Grass, PokemonType.Poison]}
             />
           </Col>
@@ -31,7 +31,7 @@ export const PokedexScreen = () => {
             <PokedexCard
               id={3}
               preset="green"
-              text="Venasaur"
+              pokemonName="Venasaur"
               types={[PokemonType.Grass, PokemonType.Poison]}
             />
           </Col>
@@ -39,7 +39,7 @@ export const PokedexScreen = () => {
             <PokedexCard
               id={4}
               preset="red"
-              text="Charmander"
+              pokemonName="Charmander"
               types={[PokemonType.Fire]}
             />
           </Col>
@@ -49,7 +49,7 @@ export const PokedexScreen = () => {
             <PokedexCard
               id={5}
               preset="red"
-              text="Charmeleon"
+              pokemonName="Charmeleon"
               types={[PokemonType.Fire]}
             />
           </Col>
@@ -57,7 +57,7 @@ export const PokedexScreen = () => {
             <PokedexCard
               id={6}
               preset="red"
-              text="Charizard"
+              pokemonName="Charizard"
               types={[PokemonType.Fire]}
             />
           </Col>
@@ -67,7 +67,7 @@ export const PokedexScreen = () => {
             <PokedexCard
               id={7}
               preset="blue"
-              text="Squirtle"
+              pokemonName="Squirtle"
               types={[PokemonType.Water]}
             />
           </Col>
@@ -75,7 +75,7 @@ export const PokedexScreen = () => {
             <PokedexCard
               id={8}
               preset="blue"
-              text="Wartortle"
+              pokemonName="Wartortle"
               types={[PokemonType.Water]}
             />
           </Col>
@@ -85,7 +85,7 @@ export const PokedexScreen = () => {
             <PokedexCard
               id={9}
               preset="blue"
-              text="Blastoise"
+              pokemonName="Blastoise"
               types={[PokemonType.Water]}
             />
           </Col>

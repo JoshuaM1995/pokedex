@@ -4,7 +4,7 @@ import { PropsWithChildren } from 'react';
 import { ImageBackground, Pressable, View } from 'react-native';
 import { Text } from '..';
 import {
-  BASE_TEXT, TAG_TEXT, TAG_VIEW, viewPresets,
+  POKEMON_NAME_TEXT, POKEMON_NUMBER_TEXT, TAG_TEXT, TAG_VIEW, viewPresets,
 } from './pokedex-card.presets';
 import { PokedexCardProps } from './pokedex-card.props';
 
@@ -13,7 +13,7 @@ export const PokedexCard = ({
   id,
   preset,
   tx,
-  text,
+  pokemonName,
   style: styleOverride,
   textStyle: textStyleOverride,
   children,
@@ -21,10 +21,6 @@ export const PokedexCard = ({
 }: PropsWithChildren<PokedexCardProps>) => {
   const viewStyle = viewPresets[preset] || viewPresets.primary;
   const viewStyles = [viewStyle, styleOverride];
-
-  const content = tx || text
-    ? <Text tx={tx} text={text} style={[BASE_TEXT, textStyleOverride]} />
-    : children;
 
   return (
     <Pressable style={viewStyles} {...pressableProps}>
@@ -42,7 +38,8 @@ export const PokedexCard = ({
           top: '50%',
         }}
       >
-        {content}
+        <Text style={POKEMON_NUMBER_TEXT}>{`#${id.toString().padStart(3, '0')}`}</Text>
+        <Text text={pokemonName} style={[POKEMON_NAME_TEXT, textStyleOverride]} />
 
         <View style={{ width: '50%' }}>
           {types.map((type, index) => (
