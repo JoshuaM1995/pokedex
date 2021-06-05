@@ -1,16 +1,13 @@
-import _ from 'lodash';
 import * as React from 'react';
 import { PropsWithChildren } from 'react';
 import { ImageBackground, Pressable, View } from 'react-native';
-import { useNavigation, NavigationProp } from '@react-navigation/native';
-import { Text } from '..';
+import { NavigationProp, useNavigation } from '@react-navigation/native';
+import { Text, TypeTag } from '..';
 import {
   IMAGE_BACKGROUND,
   IMAGE_BACKGROUND_STYLE,
   POKEMON_NAME_TEXT,
   POKEMON_NUMBER_TEXT,
-  TAG_TEXT,
-  TAG_VIEW,
   viewPresets,
 } from './pokedex-card.presets';
 import { PokedexCardProps } from './pokedex-card.props';
@@ -47,9 +44,7 @@ export const PokedexCard = ({
         <View style={{ width: '50%' }}>
           {types.map((type, index) => (
             // eslint-disable-next-line react/no-array-index-key
-            <View key={index} style={TAG_VIEW}>
-              <Text style={TAG_TEXT}>{_.upperFirst(type)}</Text>
-            </View>
+            <TypeTag key={index} type={type} />
           ))}
         </View>
       </ImageBackground>

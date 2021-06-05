@@ -1,11 +1,15 @@
 import React from 'react';
 import {
-  RouteProp, useNavigation, useRoute, NavigationProp,
+  NavigationProp, RouteProp, useNavigation, useRoute,
 } from '@react-navigation/native';
-import { Screen, Text, Section } from '../../components';
+import { Pressable, Image } from 'react-native';
+import {
+  Screen, Section, Text, TypeTag,
+} from '../../components';
 import { color } from '../../theme';
 import { PrimaryParamList, RouteName } from '../../navigators';
 import { padding } from '../../utils/react-native-helpers';
+import { PokemonType } from '../../enum';
 
 const PokemonHeaderSection = Section;
 const PokemonInfoSection = Section;
@@ -30,10 +34,45 @@ export const PokedexEntryScreen = () => {
     <Screen preset="scroll">
       <PokemonHeaderSection style={{
         backgroundColor: color.palette.green,
-        ...padding(0, 15, 80, 15),
+        height: 300,
+        ...padding(20, 15, 80, 15),
       }}
       >
-        <Text preset="h3" style={{ color: color.palette.white }}>Bulbasaur</Text>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <div>
+            <Text preset="h2" style={{ color: color.palette.white }}>Bulbasaur</Text>
+
+            <div style={{ display: 'flex', justifyContent: 'space-around' }}>
+              {/* TODO: Navigate to type chart onPress */}
+              <Pressable>
+                <TypeTag type={PokemonType.Grass} />
+              </Pressable>
+              <Pressable>
+                <TypeTag type={PokemonType.Poison} />
+              </Pressable>
+            </div>
+          </div>
+
+          <Text preset="h5" style={{ color: color.palette.white, fontWeight: 'bold', marginRight: 10 }}>
+            #001
+          </Text>
+        </div>
+
+        <div style={{
+          display: 'flex',
+          justifyContent: 'center',
+        }}
+        >
+          <Image
+            source={require('../../../assets/images/pokemon/1.png')}
+            style={{
+              height: 200,
+              width: 200,
+              position: 'absolute',
+              bottom: '0px',
+            }}
+          />
+        </div>
       </PokemonHeaderSection>
 
       <PokemonInfoSection style={{
@@ -41,9 +80,10 @@ export const PokedexEntryScreen = () => {
         borderTopLeftRadius: 30,
         borderTopRightRadius: 30,
         marginTop: -30,
+        minHeight: 30,
       }}
       >
-        <Text preset="header" text="">Some info here...</Text>
+        {/* <Text preset="header" style={{ position: 'absolute', marginTop: 50 }}>Some info here...</Text> */}
       </PokemonInfoSection>
     </Screen>
   );
