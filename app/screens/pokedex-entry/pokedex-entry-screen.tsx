@@ -91,7 +91,12 @@ export const PokedexEntryScreen = () => {
         minHeight: 30,
       }}
       >
-        <Tab.Navigator lazy style={{ marginTop: 30 }} tabBarOptions={{ labelStyle: { fontWeight: 'bold' } }}>
+        <Tab.Navigator
+          lazy
+          style={{ marginTop: 30, paddingLeft: 30, paddingRight: 30 }}
+          sceneContainerStyle={{ backgroundColor: 'white' }}
+          tabBarOptions={{ labelStyle: { fontWeight: 'bold' } }}
+        >
           <Tab.Screen name="About">{() => <PokedexEntryAboutTab />}</Tab.Screen>
           <Tab.Screen name="Base Stats">{() => <PokedexEntryBaseStatsTab />}</Tab.Screen>
           <Tab.Screen name="Evolution">{() => <PokedexEntryEvolutionTab />}</Tab.Screen>

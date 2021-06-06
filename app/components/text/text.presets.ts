@@ -15,11 +15,15 @@ const BOLD: TextStyle = {
   fontWeight: 'bold',
 };
 
+const MEDIUM: TextStyle = {
+  ...BASE,
+  fontWeight: '600',
+};
+
 const HEADER = {
   ...BASE,
   fontWeight: 'bold',
   marginTop: 20,
-  marginLeft: 15,
 };
 
 /**
@@ -37,6 +41,8 @@ export const presets = {
    * A bold version of the default text.
    */
   bold: { ...BASE, ...BOLD } as TextStyle,
+
+  medium: { ...BASE, MEDIUM } as TextStyle,
 
   /**
    * Large headers.
