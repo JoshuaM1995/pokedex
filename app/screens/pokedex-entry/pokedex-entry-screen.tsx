@@ -3,6 +3,7 @@ import {
   NavigationProp, RouteProp, useNavigation, useRoute,
 } from '@react-navigation/native';
 import { Pressable, Image } from 'react-native';
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import {
   Screen, Section, Text, TypeTag,
 } from '../../components';
@@ -10,9 +11,14 @@ import { color } from '../../theme';
 import { PrimaryParamList, RouteName } from '../../navigators';
 import { padding } from '../../utils/react-native-helpers';
 import { PokemonType } from '../../enum';
+import PokedexEntryAboutTab from './tabs/pokedex-entry-about-tab';
+import PokedexEntryBaseStatsTab from './tabs/pokedex-entry-base-stats-tab';
+import PokedexEntryEvolutionTab from './tabs/pokedex-entry-evolution-tab';
+import PokedexEntryMovesTab from './tabs/pokedex-entry-moves-tab';
 
 const PokemonHeaderSection = Section;
 const PokemonInfoSection = Section;
+const Tab = createMaterialTopTabNavigator();
 
 export const PokedexEntryScreen = () => {
   const navigation = useNavigation<NavigationProp<PrimaryParamList>>();
@@ -21,6 +27,8 @@ export const PokedexEntryScreen = () => {
   // Set the navigation header to match the color of the pokemon
   navigation.setOptions({
     headerStyle: {
+      // TODO: Programmatically get the pokemon's name
+      title: 'Bulbasaur',
       // TODO: Programmatically get the pokemon's color
       backgroundColor: color.palette.green,
     },
@@ -83,7 +91,12 @@ export const PokedexEntryScreen = () => {
         minHeight: 30,
       }}
       >
-        {/* <Text preset="header" style={{ position: 'absolute', marginTop: 50 }}>Some info here...</Text> */}
+        <Tab.Navigator style={{ marginTop: 30 }}>
+          <Tab.Screen name="About">{() => <PokedexEntryAboutTab />}</Tab.Screen>
+          <Tab.Screen name="Base Stats">{() => <PokedexEntryBaseStatsTab />}</Tab.Screen>
+          <Tab.Screen name="Evolution">{() => <PokedexEntryEvolutionTab />}</Tab.Screen>
+          <Tab.Screen name="Moves">{() => <PokedexEntryMovesTab />}</Tab.Screen>
+        </Tab.Navigator>
       </PokemonInfoSection>
     </Screen>
   );
