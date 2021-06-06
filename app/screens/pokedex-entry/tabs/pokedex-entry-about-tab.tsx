@@ -1,6 +1,8 @@
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import React from 'react';
 import { TextStyle } from 'react-native';
 import { Section, Text } from '../../../components';
+import { color } from '../../../theme';
 
 const InfoSection = Section;
 const BreedingSection = Section;
@@ -38,8 +40,14 @@ const PokedexEntryAboutTab = () => {
 
         <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 15 }}>
           <Text>Gender</Text>
-          <Text preset="bold">87.25%</Text>
-          <Text preset="bold">12.5%</Text>
+          <Text preset="bold">
+            <FontAwesomeIcon icon="mars" color={color.gender.male} style={{ marginRight: 5 }} />
+            87.b5%
+          </Text>
+          <Text preset="bold">
+            <FontAwesomeIcon icon="venus" color={color.gender.female} style={{ marginRight: 5 }} />
+            12.5%
+          </Text>
         </div>
 
         <div style={wrapperStyle}>

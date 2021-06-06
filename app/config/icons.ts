@@ -1,4 +1,7 @@
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faCoffee } from '@fortawesome/free-solid-svg-icons';
+import { faMars as faMarsSolid, faVenus as faVenusSolid } from '@fortawesome/free-solid-svg-icons';
 
-library.add(faCoffee);
+// Regular icons
+
+// Solid icons
+library.add(faMarsSolid, faVenusSolid);
