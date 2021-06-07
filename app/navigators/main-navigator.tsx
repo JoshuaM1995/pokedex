@@ -6,7 +6,7 @@
  */
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import { HomeScreen, PokedexScreen } from '../screens';
+import { HomeScreen, PokedexEntryScreen, PokedexScreen } from '../screens';
 import { color } from '../theme';
 
 /**
@@ -23,12 +23,14 @@ import { color } from '../theme';
  */
 export type PrimaryParamList = {
   Home: undefined;
-  Pokedex: undefined;
+  PokedexIndex: undefined;
+  PokedexEntry: { pokemonId: number };
 }
 
-export enum Route {
+export enum RouteName {
   Home = 'Home',
-  Pokedex = 'Pokedex',
+  PokedexIndex = 'PokedexIndex',
+  PokedexEntry = 'PokedexEntry',
 }
 
 // Documentation: https://reactnavigation.org/docs/stack-navigator/
@@ -42,11 +44,12 @@ export function MainNavigator() {
         headerShown: true,
       }}
     >
-      <Stack.Screen name={Route.Home} component={HomeScreen} />
+      <Stack.Screen name={RouteName.Home} component={HomeScreen} options={{ headerShown: false }} />
       <Stack.Screen
-        name={Route.Pokedex}
+        name={RouteName.PokedexIndex}
         component={PokedexScreen}
         options={{
+          title: 'Pokedex',
           headerStyle: {
             backgroundColor: color.palette.green,
           },
@@ -55,6 +58,11 @@ export function MainNavigator() {
             fontWeight: 'bold',
           },
         }}
+      />
+      <Stack.Screen
+        name={RouteName.PokedexEntry}
+        component={PokedexEntryScreen}
+        options={{ title: '' }}
       />
     </Stack.Navigator>
   );

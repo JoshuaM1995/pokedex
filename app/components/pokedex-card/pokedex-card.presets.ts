@@ -20,15 +20,27 @@ const BASE_VIEW: ViewStyle = {
 
 export const IMAGE_BACKGROUND: ImageStyle = {
   flex: 1,
-  resizeMode: 'cover',
-  justifyContent: 'flex-end',
+  position: 'relative',
 };
 
-export const BASE_TEXT: TextStyle = {
+export const IMAGE_BACKGROUND_STYLE: ImageStyle = {
+  position: 'absolute',
+  width: 75,
+  height: 75,
+  left: '50%',
+  top: '50%',
+};
+
+export const POKEMON_NAME_TEXT: TextStyle = {
   color: color.palette.white,
   fontFamily: typography.primary,
   fontWeight: 'bold',
   marginBottom: 15,
+};
+
+export const POKEMON_NUMBER_TEXT: TextStyle = {
+  textAlign: 'right',
+  color: 'rgba(0, 0, 0, 0.3)',
 };
 
 export const TAG_VIEW: ViewStyle = {

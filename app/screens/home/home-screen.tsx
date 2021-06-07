@@ -1,20 +1,22 @@
 import React, { useState } from 'react';
-import { ScrollView } from 'react-native';
 import { Col, Grid } from 'react-native-easy-grid';
 import { useNavigation } from '@react-navigation/native';
 import {
-  NavigationCard, Section as NavigationSection, Section as NewsSection, Text, TextField,
+  Screen, NavigationCard, Section, Text, TextField,
 } from '../../components';
 import { padding } from '../../utils/react-native-helpers';
 import { color } from '../../theme';
-import { Route } from '../../navigators';
+import { RouteName } from '../../navigators';
+
+const NavigationSection = Section;
+const NewsSection = Section;
 
 export const HomeScreen = () => {
   const [search, setSearch] = useState<string>('');
   const navigation = useNavigation();
 
   return (
-    <ScrollView testID="HomeScreen" style={{ backgroundColor: '#F2F1F5' }}>
+    <Screen testID="HomeScreen" style={{ backgroundColor: '#F2F1F5' }}>
       <NavigationSection style={{
         backgroundColor: color.background,
         borderBottomLeftRadius: 30,
@@ -36,7 +38,9 @@ export const HomeScreen = () => {
 
         <Grid style={{ ...padding(10) }}>
           <Col style={{ paddingRight: 10 }}>
-            <NavigationCard preset="green" onPress={() => navigation.navigate(Route.Pokedex)}>Pokedex</NavigationCard>
+            <NavigationCard preset="green" onPress={() => navigation.navigate(RouteName.PokedexIndex)}>
+              Pokedex
+            </NavigationCard>
           </Col>
           <Col>
             <NavigationCard preset="red">Moves</NavigationCard>
@@ -68,6 +72,6 @@ export const HomeScreen = () => {
           <Col><Text>View All</Text></Col>
         </Grid>
       </NewsSection>
-    </ScrollView>
+    </Screen>
   );
 };

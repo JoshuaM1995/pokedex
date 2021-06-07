@@ -1,8 +1,6 @@
 import {
   PressableProps, StyleProp, TextStyle, ViewStyle,
 } from 'react-native';
-import { ReactNode } from 'react';
-import { TxKeyPath } from '../../i18n';
 import { PokedexCardPresetNames } from './pokedex-card.presets';
 import { PokemonType } from '../../enum';
 
@@ -11,15 +9,7 @@ export interface PokedexCardProps extends Omit<PressableProps, 'children'> {
 
   id: number;
 
-  /**
-   * Text which is looked up via i18n.
-   */
-  tx?: TxKeyPath
-
-  /**
-   * The text to display if not using `tx` or nested components.
-   */
-  text?: string
+  pokemonName?: string
 
   /**
    * An optional style override useful for padding & margin.
@@ -35,9 +25,4 @@ export interface PokedexCardProps extends Omit<PressableProps, 'children'> {
    * One of the different types of text presets.
    */
   preset: PokedexCardPresetNames
-
-  /**
-   * One of the different types of text presets.
-   */
-  children?: ReactNode
 }
