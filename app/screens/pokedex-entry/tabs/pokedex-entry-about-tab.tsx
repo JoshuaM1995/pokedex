@@ -13,7 +13,7 @@ const statStyle: TextStyle = { marginLeft: 50, fontWeight: 'bold', textAlign: 'l
 const PokedexEntryAboutTab = () => {
   return (
     <>
-      <InfoSection style={{ width: '65%', marginTop: 30 }}>
+      <InfoSection style={{ width: '65%' }}>
         <div style={wrapperStyle}>
           <Text>Species</Text>
           <Text style={statStyle}>Seed</Text>

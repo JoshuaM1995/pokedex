@@ -66,6 +66,11 @@ export const color = {
     female: '#F5A8C5',
   },
 
+  progressBar: {
+    low: '#FB7475',
+    high: '#5FC688',
+  },
+
   /**
    * Storybook background for Text stories, or any stories where
    * the text color is color.text, which is white by default, and does not show

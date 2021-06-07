@@ -94,7 +94,7 @@ export const PokedexEntryScreen = () => {
         <Tab.Navigator
           lazy
           style={{ marginTop: 30, paddingLeft: 30, paddingRight: 30 }}
-          sceneContainerStyle={{ backgroundColor: 'white' }}
+          sceneContainerStyle={{ backgroundColor: 'white', paddingTop: 30 }}
           tabBarOptions={{ labelStyle: { fontWeight: 'bold' } }}
         >
           <Tab.Screen name="About">{() => <PokedexEntryAboutTab />}</Tab.Screen>
