@@ -37,7 +37,11 @@ enableScreens();
 
 export const NAVIGATION_PERSISTENCE_KEY = 'NAVIGATION_STATE';
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: { refetchOnMount: false, refetchOnWindowFocus: false },
+  },
+});
 
 /**
  * This is the root component of our app.
