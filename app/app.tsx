@@ -15,6 +15,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { NavigationContainerRef } from '@react-navigation/native';
 import { SafeAreaProvider, initialWindowMetrics } from 'react-native-safe-area-context';
 import { enableScreens } from 'react-native-screens';
+import { QueryClient, QueryClientProvider } from 'react-query';
 import { initFonts } from './theme/fonts'; // expo
 import * as storage from './utils/storage';
 import {
@@ -35,6 +36,8 @@ import './config/icons';
 enableScreens();
 
 export const NAVIGATION_PERSISTENCE_KEY = 'NAVIGATION_STATE';
+
+const queryClient = new QueryClient();
 
 /**
  * This is the root component of our app.
@@ -69,11 +72,13 @@ const App = () => {
     <ToggleStorybook>
       <RootStoreProvider value={rootStore}>
         <SafeAreaProvider initialMetrics={initialWindowMetrics}>
-          <RootNavigator
-            ref={navigationRef}
-            initialState={initialNavigationState}
-            onStateChange={onNavigationStateChange}
-          />
+          <QueryClientProvider client={queryClient}>
+            <RootNavigator
+              ref={navigationRef}
+              initialState={initialNavigationState}
+              onStateChange={onNavigationStateChange}
+            />
+          </QueryClientProvider>
         </SafeAreaProvider>
       </RootStoreProvider>
     </ToggleStorybook>

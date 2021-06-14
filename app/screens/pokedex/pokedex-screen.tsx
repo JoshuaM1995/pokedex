@@ -1,10 +1,16 @@
 import React from 'react';
 import { ScrollView } from 'react-native';
 import { Col, Grid, Row } from 'react-native-easy-grid';
+import { useQuery } from 'react-query';
+import { QueryKey } from '../../api';
+import { getPokemonList } from '../../api/endpoints/pokemon';
 import { PokedexCard } from '../../components';
-import { PokemonType } from '../../enum';
+import { PokemonType } from '../../enums';
 
 export const PokedexScreen = () => {
+  const query = useQuery(QueryKey.Pokemon, () => getPokemonList(50));
+  console.log('pokedex-screen', query.data?.data.results);
+
   return (
     <ScrollView testID="PokedexScreen" style={{ padding: 20, paddingBottom: 10 }}>
       <Grid>

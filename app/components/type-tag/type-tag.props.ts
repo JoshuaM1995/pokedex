@@ -1,5 +1,5 @@
 import { StyleProp, TextStyle, ViewStyle } from 'react-native';
-import { PokemonType } from '../../enum';
+import { PokemonType } from '../../enums';
 
 type TypeTagProps = {
   /**
