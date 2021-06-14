@@ -13,7 +13,7 @@ const PokedexEntryEvolutionTab = () => {
           icon: require('../../../../assets/images/pokemon/2.png'),
         },
         {
-          time: 'Level 16',
+          time: 'Level 32',
           title: 'Venasaur',
           description: '#003',
           icon: require('../../../../assets/images/pokemon/3.png'),

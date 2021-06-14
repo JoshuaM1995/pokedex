@@ -1,10 +1,11 @@
 import React from 'react';
+import { View, Text } from 'react-native';
 
 const PokedexEntryMovesTab = () => {
   return (
-    <div>
-      {'bulbasaur\'s moves'}
-    </div>
+    <View>
+      <Text>Moves Table</Text>
+    </View>
   );
 };
 
