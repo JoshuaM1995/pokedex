@@ -2,7 +2,7 @@ import {
   PressableProps, StyleProp, TextStyle, ViewStyle,
 } from 'react-native';
 import { PokedexCardPresetNames } from './pokedex-card.presets';
-import { PokemonType } from '../../enum';
+import { PokemonType } from '../../enums';
 
 export interface PokedexCardProps extends Omit<PressableProps, 'children'> {
   types: [PokemonType, PokemonType?];

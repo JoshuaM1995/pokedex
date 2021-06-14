@@ -10,7 +10,7 @@ import {
 import { color } from '../../theme';
 import { PrimaryParamList, RouteName } from '../../navigators';
 import { padding } from '../../utils/react-native-helpers';
-import { PokemonType } from '../../enum';
+import { PokemonType } from '../../enums';
 import PokedexEntryAboutTab from './tabs/pokedex-entry-about-tab';
 import PokedexEntryBaseStatsTab from './tabs/pokedex-entry-base-stats-tab';
 import PokedexEntryEvolutionTab from './tabs/pokedex-entry-evolution-tab';
