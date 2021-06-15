@@ -1,21 +1,36 @@
 import _ from 'lodash';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { ScrollView } from 'react-native';
 import { Col, Grid, Row } from 'react-native-easy-grid';
 import { useQuery } from 'react-query';
 import { QueryKey } from '../../api';
-import { getPokemonByName, getPokemonSpeciesByName, getPokemonList } from '../../api/endpoints/pokemon';
+import { getPokemonByName, getPokemonList, getPokemonSpeciesByName } from '../../api/endpoints/pokemon';
 import { PokedexCard } from '../../components';
 import { PokemonType } from '../../enums';
 import { useQueriesTyped as useQueries } from '../../types';
+import FontAwesomeIconSpin from '../../components/misc/FontAwesomeIconSpin';
+
+const RESULT_LIMIT = 10;
+
+const isCloseToBottom = ({ layoutMeasurement, contentOffset, contentSize }) => {
+  const paddingToBottom = 20;
+  return layoutMeasurement.height + contentOffset.y
+    >= contentSize.height - paddingToBottom;
+};
 
 export const PokedexScreen = () => {
-  const { data: pokemonList } = useQuery(QueryKey.PokemonList, () => getPokemonList(10));
-  const pokemonListResults = pokemonList?.data.results;
-  const pokemonResults = useQueries(
+  const [page, setPage] = useState(0);
+
+  const pokemonListQuery = useQuery(
+    `${QueryKey.PokemonList}_${page}`,
+    () => getPokemonList(RESULT_LIMIT, page * RESULT_LIMIT),
+    { keepPreviousData: true },
+  );
+  const pokemonListResults = pokemonListQuery.data?.data.results;
+  const pokemonResultsQueries = useQueries(
     pokemonListResults?.map(({ name }) => {
       return {
-        queryKey: `${QueryKey.Pokemon}_${name}`,
+        queryKey: `${QueryKey.Pokemon}_${name}_${page}`,
         queryFn: async () => {
           const pokemonInfo = await getPokemonByName(name);
           const pokemonSpecies = await getPokemonSpeciesByName(pokemonInfo.data.id);
@@ -26,19 +41,23 @@ export const PokedexScreen = () => {
           };
         },
         enabled: !!pokemonListResults,
+        keepPreviousData: true,
       };
     }) ?? [],
   ).filter(({ data }) => !!data);
-  const pokemonResultsChunks = _.chunk(pokemonResults, 2);
+  const pokemonResultsChunks = _.chunk(pokemonResultsQueries, 2);
 
   return (
-    <ScrollView testID="PokedexScreen" style={{ padding: 20, paddingBottom: 10 }}>
+    <ScrollView
+      testID="PokedexScreen"
+      style={{ padding: 20, paddingBottom: 10 }}
+    >
       <Grid>
-        {pokemonResultsChunks.map((chunks) => {
+        {pokemonResultsChunks.map((chunks, i) => {
           return (
-            <Row>
+          // eslint-disable-next-line react/no-array-index-key
+            <Row key={i}>
               {chunks.map(({ data: { info: { id, name, types }, species } }) => {
-                console.log('color', { species });
                 return (
                   <Col key={id} style={{ paddingRight: 5, paddingBottom: 10 }}>
                     <PokedexCard
