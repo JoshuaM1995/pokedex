@@ -5,7 +5,7 @@ import { PokedexCardPresetNames } from './pokedex-card.presets';
 import { PokemonType } from '../../enums';
 
 export interface PokedexCardProps extends Omit<PressableProps, 'children'> {
-  types: [PokemonType, PokemonType?];
+  types: PokemonType[];
 
   id: number;
 

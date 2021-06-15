@@ -1,101 +1,77 @@
-import React from 'react';
+import _ from 'lodash';
+import React, { useEffect, useState } from 'react';
 import { ScrollView } from 'react-native';
 import { Col, Grid, Row } from 'react-native-easy-grid';
 import { useQuery } from 'react-query';
 import { QueryKey } from '../../api';
-import { getPokemonList } from '../../api/endpoints/pokemon';
+import { getPokemonByName, getPokemonList, getPokemonSpeciesByName } from '../../api/endpoints/pokemon';
 import { PokedexCard } from '../../components';
 import { PokemonType } from '../../enums';
+import { useQueriesTyped as useQueries } from '../../types';
+import FontAwesomeIconSpin from '../../components/misc/FontAwesomeIconSpin';
+
+const RESULT_LIMIT = 10;
+
+const isCloseToBottom = ({ layoutMeasurement, contentOffset, contentSize }) => {
+  const paddingToBottom = 20;
+  return layoutMeasurement.height + contentOffset.y
+    >= contentSize.height - paddingToBottom;
+};
 
 export const PokedexScreen = () => {
-  const query = useQuery(QueryKey.Pokemon, () => getPokemonList(50));
-  console.log('pokedex-screen', query.data?.data.results);
+  const [page, setPage] = useState(0);
+
+  const pokemonListQuery = useQuery(
+    `${QueryKey.PokemonList}_${page}`,
+    () => getPokemonList(RESULT_LIMIT, page * RESULT_LIMIT),
+    { keepPreviousData: true },
+  );
+  const pokemonListResults = pokemonListQuery.data?.data.results;
+  const pokemonResultsQueries = useQueries(
+    pokemonListResults?.map(({ name }) => {
+      return {
+        queryKey: `${QueryKey.Pokemon}_${name}_${page}`,
+        queryFn: async () => {
+          const pokemonInfo = await getPokemonByName(name);
+          const pokemonSpecies = await getPokemonSpeciesByName(pokemonInfo.data.id);
+
+          return {
+            info: pokemonInfo.data,
+            species: pokemonSpecies.data,
+          };
+        },
+        enabled: !!pokemonListResults,
+        keepPreviousData: true,
+      };
+    }) ?? [],
+  ).filter(({ data }) => !!data);
+  const pokemonResultsChunks = _.chunk(pokemonResultsQueries, 2);
 
   return (
-    <ScrollView testID="PokedexScreen" style={{ padding: 20, paddingBottom: 10 }}>
+    <ScrollView
+      testID="PokedexScreen"
+      style={{ padding: 20, paddingBottom: 10 }}
+    >
       <Grid>
-        <Row>
-          <Col style={{ paddingRight: 5, paddingBottom: 10 }}>
-            <PokedexCard
-              id={1}
-              preset="green"
-              pokemonName="Bulbasaur"
-              types={[PokemonType.Grass, PokemonType.Poison]}
-            />
-          </Col>
-          <Col style={{ paddingLeft: 5, paddingBottom: 10 }}>
-            <PokedexCard
-              id={2}
-              preset="green"
-              pokemonName="Ivysaur"
-              types={[PokemonType.Grass, PokemonType.Poison]}
-            />
-          </Col>
-        </Row>
-        <Row>
-          <Col style={{ paddingRight: 5, paddingBottom: 10 }}>
-            <PokedexCard
-              id={3}
-              preset="green"
-              pokemonName="Venasaur"
-              types={[PokemonType.Grass, PokemonType.Poison]}
-            />
-          </Col>
-          <Col style={{ paddingLeft: 5, paddingBottom: 10 }}>
-            <PokedexCard
-              id={4}
-              preset="red"
-              pokemonName="Charmander"
-              types={[PokemonType.Fire]}
-            />
-          </Col>
-        </Row>
-        <Row>
-          <Col style={{ paddingRight: 5, paddingBottom: 10 }}>
-            <PokedexCard
-              id={5}
-              preset="red"
-              pokemonName="Charmeleon"
-              types={[PokemonType.Fire]}
-            />
-          </Col>
-          <Col style={{ paddingLeft: 5, paddingBottom: 10 }}>
-            <PokedexCard
-              id={6}
-              preset="red"
-              pokemonName="Charizard"
-              types={[PokemonType.Fire]}
-            />
-          </Col>
-        </Row>
-        <Row>
-          <Col style={{ paddingRight: 5, paddingBottom: 10 }}>
-            <PokedexCard
-              id={7}
-              preset="blue"
-              pokemonName="Squirtle"
-              types={[PokemonType.Water]}
-            />
-          </Col>
-          <Col style={{ paddingLeft: 5, paddingBottom: 10 }}>
-            <PokedexCard
-              id={8}
-              preset="blue"
-              pokemonName="Wartortle"
-              types={[PokemonType.Water]}
-            />
-          </Col>
-        </Row>
-        <Row>
-          <Col style={{ paddingRight: 5, paddingBottom: 10 }}>
-            <PokedexCard
-              id={9}
-              preset="blue"
-              pokemonName="Blastoise"
-              types={[PokemonType.Water]}
-            />
-          </Col>
-        </Row>
+        {pokemonResultsChunks.map((chunks, i) => {
+          return (
+          // eslint-disable-next-line react/no-array-index-key
+            <Row key={i}>
+              {chunks.map(({ data: { info: { id, name, types }, species } }) => {
+                return (
+                  <Col key={id} style={{ paddingRight: 5, paddingBottom: 10 }}>
+                    <PokedexCard
+                      id={id}
+                      preset={species.color.name}
+                      pokemonName={_.capitalize(name)}
+                      types={types.map(({ type }) => type.name as PokemonType)}
+                    />
+                  </Col>
+                );
+              })}
+            </Row>
+          );
+        })}
       </Grid>
     </ScrollView>
   );
