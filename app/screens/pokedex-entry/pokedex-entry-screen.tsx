@@ -37,8 +37,6 @@ export const PokedexEntryScreen = () => {
   const pokemonSpecies = pokemonSpeciesQuery.data?.data;
   const backgroundColor = pokemonSpecies ? color.palette[pokemonSpecies.color.name] : '';
 
-  console.log({ pokemonInfo, pokemonSpecies });
-
   // Set the navigation header to match the color of the pokemon
   navigation.setOptions({
     headerStyle: {
@@ -67,12 +65,6 @@ export const PokedexEntryScreen = () => {
 
             <div style={{ display: 'flex', justifyContent: 'space-around' }}>
               {/* TODO: Navigate to type chart onPress */}
-              {/* <Pressable>
-                <TypeTag type={PokemonType.Grass} />
-              </Pressable>
-              <Pressable>
-                <TypeTag type={PokemonType.Poison} />
-              </Pressable> */}
               {pokemonInfo?.types.map(({ type }) => (
                 <Pressable>
                   <TypeTag type={_.capitalize(type.name) as PokemonType} />
@@ -117,7 +109,11 @@ export const PokedexEntryScreen = () => {
           sceneContainerStyle={{ backgroundColor: 'white', paddingTop: 30 }}
           tabBarOptions={{ labelStyle: { fontWeight: 'bold' } }}
         >
-          <Tab.Screen name="About">{() => <PokedexEntryAboutTab />}</Tab.Screen>
+          <Tab.Screen name="About">
+            {() => (
+              <PokedexEntryAboutTab info={pokemonInfo} species={pokemonSpecies} />
+            )}
+          </Tab.Screen>
           <Tab.Screen name="Base Stats">{() => <PokedexEntryBaseStatsTab />}</Tab.Screen>
           <Tab.Screen name="Evolution">{() => <PokedexEntryEvolutionTab />}</Tab.Screen>
           <Tab.Screen name="Moves">{() => <PokedexEntryMovesTab />}</Tab.Screen>

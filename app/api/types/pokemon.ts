@@ -173,29 +173,34 @@ export interface Color {
   url: string;
 }
 
+export interface Language {
+  name: string;
+  url: string;
+}
+
 export interface EvolutionChain {
   url: string;
 }
 
 export interface FlavorTextEntry {
   flavorText: string;
-  language: Color;
+  language: Language;
   version: Color;
 }
 
 export interface FormDescription {
   description: string;
-  language: Color;
+  language: Language;
 }
 
 export interface Genus {
   genus: string;
-  language: Color;
+  language: Language;
 }
 
 export interface Name {
   name: string;
-  language: Color;
+  language: Language;
 }
 
 export interface PokedexNumber {
