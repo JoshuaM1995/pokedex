@@ -152,15 +152,15 @@ export type PokemonSpeciesObjectFull = {
   hatchCounter: number;
   hasGenderDifferences: boolean;
   formsSwitchable: boolean;
-  growthRate: Color;
+  growthRate: NameWithURL;
   pokedexNumbers: PokedexNumber[];
-  eggGroups: Color[];
-  color: Color;
-  shape: Color;
-  evolvesFromSpecies: Color;
+  eggGroups: NameWithURL[];
+  color: NameWithURL;
+  shape: NameWithURL;
+  evolvesFromSpecies: NameWithURL;
   evolutionChain: EvolutionChain;
   habitat: null;
-  generation: Color;
+  generation: NameWithURL;
   names: Name[];
   flavorTextEntries: FlavorTextEntry[];
   formDescriptions: FormDescription[];
@@ -168,7 +168,7 @@ export type PokemonSpeciesObjectFull = {
   varieties: Variety[];
 }
 
-export type Color = {
+export type NameWithURL = {
   name: string;
   url: string;
 }
@@ -185,7 +185,7 @@ export type EvolutionChain = {
 export type FlavorTextEntry = {
   flavorText: string;
   language: Language;
-  version: Color;
+  version: NameWithURL;
 }
 
 export type FormDescription = {
@@ -205,10 +205,10 @@ export type Name = {
 
 export type PokedexNumber = {
   entryNumber: number;
-  pokedex: Color;
+  pokedex: NameWithURL;
 }
 
 export type Variety = {
   isDefault: boolean;
-  pokemon: Color;
+  pokemon: NameWithURL;
 }
