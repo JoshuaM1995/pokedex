@@ -15,7 +15,7 @@ import { padding } from '../../utils/react-native-helpers';
 import { PokemonType } from '../../enums';
 import PokedexEntryAboutTab from './tabs/pokedex-entry-about-tab';
 import PokedexEntryBaseStatsTab from './tabs/pokedex-entry-base-stats-tab';
-import PokedexEntryEvolutionTab from './tabs/pokedex-entry-evolution-tab';
+import PokedexEntryEvolutionsTab from './tabs/pokedex-entry-evolutions-tab';
 import PokedexEntryMovesTab from './tabs/pokedex-entry-moves-tab';
 import { QueryKey } from '../../api';
 import { getPokemonById, getPokemonSpeciesById } from '../../api/endpoints/pokemon';
@@ -118,7 +118,7 @@ export const PokedexEntryScreen = () => {
             {() =>
               <PokedexEntryBaseStatsTab pokemonId={pokemonId} info={pokemonInfo} />}
           </Tab.Screen>
-          <Tab.Screen name="Evolutions">{() => <PokedexEntryEvolutionTab />}</Tab.Screen>
+          <Tab.Screen name="Evolutions">{() => <PokedexEntryEvolutionsTab />}</Tab.Screen>
           <Tab.Screen name="Moves">{() => <PokedexEntryMovesTab />}</Tab.Screen>
         </Tab.Navigator>
       </PokemonInfoSection>
