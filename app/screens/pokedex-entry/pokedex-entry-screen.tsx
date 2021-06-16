@@ -114,7 +114,10 @@ export const PokedexEntryScreen = () => {
               <PokedexEntryAboutTab info={pokemonInfo} species={pokemonSpecies} />
             )}
           </Tab.Screen>
-          <Tab.Screen name="Base Stats">{() => <PokedexEntryBaseStatsTab />}</Tab.Screen>
+          <Tab.Screen name="Base Stats">
+            {() =>
+              <PokedexEntryBaseStatsTab pokemonId={pokemonId} info={pokemonInfo} />}
+          </Tab.Screen>
           <Tab.Screen name="Evolution">{() => <PokedexEntryEvolutionTab />}</Tab.Screen>
           <Tab.Screen name="Moves">{() => <PokedexEntryMovesTab />}</Tab.Screen>
         </Tab.Navigator>

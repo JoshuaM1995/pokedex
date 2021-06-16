@@ -128,10 +128,24 @@ export type GenerationEight = {
   icons: DreamWorld;
 }
 
+export enum StatName {
+  HP = 'hp',
+  Attack = 'attack',
+  Defense = 'defense',
+  SpecialAttack = 'special-attack',
+  SpecialDefense = 'special-defense',
+  Speed = 'speed',
+}
+
+export type StatType = {
+  name: StatName;
+  url: string;
+};
+
 export type Stat = {
   baseStat: number;
   effort: number;
-  stat: Species;
+  stat: StatType;
 }
 
 export type Type = {
