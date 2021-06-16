@@ -4,7 +4,7 @@ import { View, Text } from 'react-native';
 const PokedexEntryMovesTab = () => {
   return (
     <View>
-      <Text>Moves Table</Text>
+      <Text>PokedexEntryMovesTab</Text>
     </View>
   );
 };

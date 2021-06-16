@@ -16,7 +16,7 @@ export const PokemonStat = ({ name, value }: PokemonStatProps) => {
       <Text preset="bold" style={{ flex: 0.5 }}>{value}</Text>
 
       <div style={{ flex: 3 }}>
-        <ProgressBar value={value} />
+        <ProgressBar preset="green" value={value} />
       </div>
     </div>
   );
