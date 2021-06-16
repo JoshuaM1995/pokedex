@@ -26,17 +26,19 @@ const PokedexEntryAboutTab = ({ info, species }: PokedexEntryAboutTabProps) => {
   const inches = (heightIn - (feet * 12)).toFixed(1);
   const weightKg = (info?.weight ?? 0) / 10;
   const weightLbs = (convert(weightKg).from('kg').to('lb')).toFixed(1);
+  const femaleGenderPercentage = species?.genderRate ? (species.genderRate / 8) * 100 : 0;
+  const maleGenderPercentage = 100 - femaleGenderPercentage;
 
   console.log('PokedexEntryAboutTab', {
     info,
     species,
-    weightKg,
-    weightLbs,
   });
 
   return (
     <>
       <InfoSection style={{ width: '65%' }}>
+        <Text preset="h5" style={{ marginBottom: 20 }}>Information</Text>
+
         <div style={wrapperStyle}>
           <Text>Species</Text>
           <Text style={statStyle}>{pokemonSpecies.replace(' Pokémon', '')}</Text>
@@ -65,11 +67,11 @@ const PokedexEntryAboutTab = ({ info, species }: PokedexEntryAboutTabProps) => {
           <Text>Gender</Text>
           <Text preset="bold">
             <FontAwesomeIcon icon="mars" color={color.gender.male} style={{ marginRight: 5 }} />
-            87.b5%
+            {`${maleGenderPercentage}%`}
           </Text>
           <Text preset="bold">
             <FontAwesomeIcon icon="venus" color={color.gender.female} style={{ marginRight: 5 }} />
-            12.5%
+            {`${femaleGenderPercentage}%`}
           </Text>
         </div>
 
