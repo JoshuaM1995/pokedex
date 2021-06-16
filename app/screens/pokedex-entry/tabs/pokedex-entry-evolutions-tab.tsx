@@ -2,7 +2,7 @@ import React from 'react';
 import Timeline from 'react-native-timeline-flatlist';
 import { color } from '../../../theme/color';
 
-const PokedexEntryEvolutionTab = () => {
+const PokedexEntryEvolutionsTab = () => {
   return (
     <Timeline
       data={[
@@ -39,4 +39,4 @@ const PokedexEntryEvolutionTab = () => {
   );
 };
 
-export default PokedexEntryEvolutionTab;
+export default PokedexEntryEvolutionsTab;
