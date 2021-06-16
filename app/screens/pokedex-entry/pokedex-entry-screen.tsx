@@ -15,10 +15,11 @@ import { padding } from '../../utils/react-native-helpers';
 import { PokemonType } from '../../enums';
 import PokedexEntryAboutTab from './tabs/pokedex-entry-about-tab';
 import PokedexEntryBaseStatsTab from './tabs/pokedex-entry-base-stats-tab';
-import PokedexEntryEvolutionTab from './tabs/pokedex-entry-evolution-tab';
+import PokedexEntryEvolutionsTab from './tabs/pokedex-entry-evolutions-tab';
 import PokedexEntryMovesTab from './tabs/pokedex-entry-moves-tab';
 import { QueryKey } from '../../api';
-import { getPokemonById, getPokemonSpeciesById } from '../../api/endpoints/pokemon';
+import { getPokemonById, getPokemonEvolutionChainById, getPokemonSpeciesById } from '../../api/endpoints/pokemon';
+import { getIdFromURL } from '../../utils';
 
 const PokemonHeaderSection = Section;
 const PokemonInfoSection = Section;
@@ -35,13 +36,21 @@ export const PokedexEntryScreen = () => {
     () => getPokemonSpeciesById(pokemonId),
   );
   const pokemonSpecies = pokemonSpeciesQuery.data?.data;
-  const backgroundColor = pokemonSpecies ? color.palette[pokemonSpecies.color.name] : '';
+  const pokemonEvolutionQuery = useQuery(
+    `${QueryKey.PokemonEvolution}_${pokemonId}`,
+    () => getPokemonEvolutionChainById(getIdFromURL(pokemonSpecies.evolutionChain.url)),
+    { enabled: !!pokemonSpecies },
+  );
+  const pokemonEvolution = pokemonEvolutionQuery.data?.data;
+  const pokemonColor = pokemonSpecies ? color.palette[pokemonSpecies.color.name] : '';
+
+  console.log({ pokemonSpecies });
 
   // Set the navigation header to match the color of the pokemon
   navigation.setOptions({
     headerStyle: {
       title: _.capitalize(pokemonInfo?.name),
-      backgroundColor,
+      backgroundColor: pokemonColor,
     },
     headerTintColor: '#fff',
     headerTitleStyle: {
@@ -52,7 +61,7 @@ export const PokedexEntryScreen = () => {
   return (
     <Screen preset="scroll">
       <PokemonHeaderSection style={{
-        backgroundColor,
+        backgroundColor: pokemonColor,
         height: 300,
         ...padding(20, 15, 80, 15),
       }}
@@ -116,9 +125,13 @@ export const PokedexEntryScreen = () => {
           </Tab.Screen>
           <Tab.Screen name="Base Stats">
             {() =>
-              <PokedexEntryBaseStatsTab pokemonId={pokemonId} info={pokemonInfo} />}
+              <PokedexEntryBaseStatsTab info={pokemonInfo} />}
           </Tab.Screen>
-          <Tab.Screen name="Evolution">{() => <PokedexEntryEvolutionTab />}</Tab.Screen>
+          <Tab.Screen name="Evolutions">
+            {() => (
+              <PokedexEntryEvolutionsTab evolution={pokemonEvolution} color={pokemonColor} />
+            )}
+          </Tab.Screen>
           <Tab.Screen name="Moves">{() => <PokedexEntryMovesTab />}</Tab.Screen>
         </Tab.Navigator>
       </PokemonInfoSection>

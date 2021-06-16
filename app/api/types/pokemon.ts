@@ -226,3 +226,37 @@ export type Variety = {
   isDefault: boolean;
   pokemon: NameWithURL;
 }
+
+export interface PokemonEvolutionObjectFull {
+  id: number;
+  babyTriggerItem: null;
+  chain: Chain;
+}
+
+export interface Chain {
+  isBaby: boolean;
+  species: Species;
+  evolutionDetails: EvolutionDetail[] | null;
+  evolvesTo: Chain[];
+}
+
+export interface EvolutionDetail {
+  item: null;
+  trigger: Species;
+  gender: null;
+  heldItem: null;
+  knownMove: null;
+  knownMoveType: null;
+  location: null;
+  minLevel: number;
+  minHappiness: null;
+  minBeauty: null;
+  minAffection: null;
+  needsOverworldRain: boolean;
+  partySpecies: null;
+  partyType: null;
+  relativePhysicalStats: null;
+  timeOfDay: string;
+  tradeSpecies: null;
+  turnUpsideDown: boolean;
+}

@@ -1,0 +1,1 @@
+export const getIdFromURLRegex = /\/[\d]+\//;
