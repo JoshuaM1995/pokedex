@@ -18,7 +18,8 @@ import PokedexEntryBaseStatsTab from './tabs/pokedex-entry-base-stats-tab';
 import PokedexEntryEvolutionsTab from './tabs/pokedex-entry-evolutions-tab';
 import PokedexEntryMovesTab from './tabs/pokedex-entry-moves-tab';
 import { QueryKey } from '../../api';
-import { getPokemonById, getPokemonSpeciesById } from '../../api/endpoints/pokemon';
+import { getPokemonById, getPokemonEvolutionChainById, getPokemonSpeciesById } from '../../api/endpoints/pokemon';
+import { getIdFromURL } from '../../utils';
 
 const PokemonHeaderSection = Section;
 const PokemonInfoSection = Section;
@@ -35,6 +36,12 @@ export const PokedexEntryScreen = () => {
     () => getPokemonSpeciesById(pokemonId),
   );
   const pokemonSpecies = pokemonSpeciesQuery.data?.data;
+  const pokemonEvolutionQuery = useQuery(
+    `${QueryKey.PokemonEvolution}_${pokemonId}`,
+    () => getPokemonEvolutionChainById(getIdFromURL(pokemonSpecies.evolutionChain.url)),
+    { enabled: !!pokemonSpecies },
+  );
+  const pokemonEvolution = pokemonEvolutionQuery.data?.data;
   const backgroundColor = pokemonSpecies ? color.palette[pokemonSpecies.color.name] : '';
 
   // Set the navigation header to match the color of the pokemon
@@ -116,9 +123,9 @@ export const PokedexEntryScreen = () => {
           </Tab.Screen>
           <Tab.Screen name="Base Stats">
             {() =>
-              <PokedexEntryBaseStatsTab pokemonId={pokemonId} info={pokemonInfo} />}
+              <PokedexEntryBaseStatsTab info={pokemonInfo} />}
           </Tab.Screen>
-          <Tab.Screen name="Evolutions">{() => <PokedexEntryEvolutionsTab />}</Tab.Screen>
+          <Tab.Screen name="Evolutions">{() => <PokedexEntryEvolutionsTab evolution={pokemonEvolution} />}</Tab.Screen>
           <Tab.Screen name="Moves">{() => <PokedexEntryMovesTab />}</Tab.Screen>
         </Tab.Navigator>
       </PokemonInfoSection>

@@ -2,7 +2,13 @@ import React from 'react';
 import Timeline from 'react-native-timeline-flatlist';
 import { color } from '../../../theme/color';
 
-const PokedexEntryEvolutionsTab = () => {
+type PokedexEntryEvolutionsTabProps = {
+  evolution: any;
+};
+
+const PokedexEntryEvolutionsTab = ({ evolution }: PokedexEntryEvolutionsTabProps) => {
+  console.log({ evolution });
+
   return (
     <Timeline
       data={[
