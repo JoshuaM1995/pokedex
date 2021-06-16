@@ -77,12 +77,9 @@ const PokedexEntryAboutTab = ({ info, species }: PokedexEntryAboutTabProps) => {
 
         <div style={wrapperStyle}>
           <Text>Egg Groups</Text>
-          <Text style={statStyle}>Monster</Text>
-        </div>
-
-        <div style={wrapperStyle}>
-          <Text>Egg Cycle</Text>
-          <Text style={statStyle}>Grass</Text>
+          <Text style={statStyle}>
+            {species?.eggGroups?.map(({ name }) => _.capitalize(name)).join(', ')}
+          </Text>
         </div>
       </BreedingSection>
     </>
