@@ -1,22 +1,15 @@
 import _ from 'lodash';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { ScrollView } from 'react-native';
 import { Col, Grid, Row } from 'react-native-easy-grid';
 import { useQuery } from 'react-query';
 import { QueryKey } from '../../api';
-import { getPokemonByName, getPokemonList, getPokemonSpeciesByName } from '../../api/endpoints/pokemon';
+import { getPokemonByName, getPokemonList, getPokemonSpeciesById } from '../../api/endpoints/pokemon';
 import { PokedexCard } from '../../components';
 import { PokemonType } from '../../enums';
 import { useQueriesTyped as useQueries } from '../../types';
-import FontAwesomeIconSpin from '../../components/misc/FontAwesomeIconSpin';
 
 const RESULT_LIMIT = 10;
-
-const isCloseToBottom = ({ layoutMeasurement, contentOffset, contentSize }) => {
-  const paddingToBottom = 20;
-  return layoutMeasurement.height + contentOffset.y
-    >= contentSize.height - paddingToBottom;
-};
 
 export const PokedexScreen = () => {
   const [page, setPage] = useState(0);
@@ -33,7 +26,7 @@ export const PokedexScreen = () => {
         queryKey: `${QueryKey.Pokemon}_${name}_${page}`,
         queryFn: async () => {
           const pokemonInfo = await getPokemonByName(name);
-          const pokemonSpecies = await getPokemonSpeciesByName(pokemonInfo.data.id);
+          const pokemonSpecies = await getPokemonSpeciesById(pokemonInfo.data.id);
 
           return {
             info: pokemonInfo.data,

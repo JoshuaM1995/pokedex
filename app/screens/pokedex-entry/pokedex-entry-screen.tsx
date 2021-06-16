@@ -4,6 +4,8 @@ import {
 } from '@react-navigation/native';
 import { Pressable, Image } from 'react-native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+import { useQuery } from 'react-query';
+import _ from 'lodash';
 import {
   Screen, Section, Text, TypeTag,
 } from '../../components';
@@ -15,6 +17,8 @@ import PokedexEntryAboutTab from './tabs/pokedex-entry-about-tab';
 import PokedexEntryBaseStatsTab from './tabs/pokedex-entry-base-stats-tab';
 import PokedexEntryEvolutionTab from './tabs/pokedex-entry-evolution-tab';
 import PokedexEntryMovesTab from './tabs/pokedex-entry-moves-tab';
+import { QueryKey } from '../../api';
+import { getPokemonById, getPokemonSpeciesById } from '../../api/endpoints/pokemon';
 
 const PokemonHeaderSection = Section;
 const PokemonInfoSection = Section;
@@ -24,13 +28,20 @@ export const PokedexEntryScreen = () => {
   const navigation = useNavigation<NavigationProp<PrimaryParamList>>();
   const { params: { pokemonId } } = useRoute<RouteProp<PrimaryParamList, RouteName.PokedexEntry>>();
 
+  const pokemonInfoQuery = useQuery(`${QueryKey.Pokemon}_${pokemonId}`, () => getPokemonById(pokemonId));
+  const pokemonInfo = pokemonInfoQuery.data?.data;
+  const pokemonSpeciesQuery = useQuery(
+    `${QueryKey.PokemonSpecies}_${pokemonId}`,
+    () => getPokemonSpeciesById(pokemonId),
+  );
+  const pokemonSpecies = pokemonSpeciesQuery.data?.data;
+  const backgroundColor = pokemonSpecies ? color.palette[pokemonSpecies.color.name] : '';
+
   // Set the navigation header to match the color of the pokemon
   navigation.setOptions({
     headerStyle: {
-      // TODO: Programmatically get the pokemon's name
-      title: 'Bulbasaur',
-      // TODO: Programmatically get the pokemon's color
-      backgroundColor: color.palette.green,
+      title: _.capitalize(pokemonInfo?.name),
+      backgroundColor,
     },
     headerTintColor: '#fff',
     headerTitleStyle: {
@@ -41,28 +52,29 @@ export const PokedexEntryScreen = () => {
   return (
     <Screen preset="scroll">
       <PokemonHeaderSection style={{
-        backgroundColor: color.palette.green,
+        backgroundColor,
         height: 300,
         ...padding(20, 15, 80, 15),
       }}
       >
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <div>
-            <Text preset="h2" style={{ color: color.palette.white }}>Bulbasaur</Text>
+            <Text preset="h2" style={{ color: color.palette.white }}>
+              {_.capitalize(pokemonInfo?.name)}
+            </Text>
 
             <div style={{ display: 'flex', justifyContent: 'space-around' }}>
               {/* TODO: Navigate to type chart onPress */}
-              <Pressable>
-                <TypeTag type={PokemonType.Grass} />
-              </Pressable>
-              <Pressable>
-                <TypeTag type={PokemonType.Poison} />
-              </Pressable>
+              {pokemonInfo?.types.map(({ type }) => (
+                <Pressable>
+                  <TypeTag type={_.capitalize(type.name) as PokemonType} />
+                </Pressable>
+              ))}
             </div>
           </div>
 
           <Text preset="h5" style={{ color: color.palette.white, fontWeight: 'bold', marginRight: 10 }}>
-            #001
+            {`#${pokemonId.toString().padStart(3, '0')}`}
           </Text>
         </div>
 
@@ -72,7 +84,7 @@ export const PokedexEntryScreen = () => {
         }}
         >
           <Image
-            source={require('../../../assets/images/pokemon/1.png')}
+            source={require(`../../../assets/images/pokemon/${pokemonId}.png`)}
             style={{
               height: 200,
               width: 200,
@@ -97,7 +109,11 @@ export const PokedexEntryScreen = () => {
           sceneContainerStyle={{ backgroundColor: 'white', paddingTop: 30 }}
           tabBarOptions={{ labelStyle: { fontWeight: 'bold' } }}
         >
-          <Tab.Screen name="About">{() => <PokedexEntryAboutTab />}</Tab.Screen>
+          <Tab.Screen name="About">
+            {() => (
+              <PokedexEntryAboutTab info={pokemonInfo} species={pokemonSpecies} />
+            )}
+          </Tab.Screen>
           <Tab.Screen name="Base Stats">{() => <PokedexEntryBaseStatsTab />}</Tab.Screen>
           <Tab.Screen name="Evolution">{() => <PokedexEntryEvolutionTab />}</Tab.Screen>
           <Tab.Screen name="Moves">{() => <PokedexEntryMovesTab />}</Tab.Screen>

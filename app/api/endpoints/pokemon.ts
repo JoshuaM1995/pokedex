@@ -10,6 +10,10 @@ export const getPokemonByName = (name: string) => {
   return apiRequest<PokemonObjectFull>(`/pokemon/${name}`, HttpMethod.GET);
 };
 
-export const getPokemonSpeciesByName = (id: number) => {
+export const getPokemonById = (id: number) => {
+  return apiRequest<PokemonObjectFull>(`/pokemon/${id}`, HttpMethod.GET);
+};
+
+export const getPokemonSpeciesById = (id: number) => {
   return apiRequest<PokemonSpeciesObjectFull>(`/pokemon-species/${id}`, HttpMethod.GET);
 };

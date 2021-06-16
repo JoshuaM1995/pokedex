@@ -1,5 +1,8 @@
-import axios, { AxiosResponse, AxiosRequestConfig, CancelToken } from 'axios';
+import ax, { AxiosResponse, AxiosRequestConfig, CancelToken } from 'axios';
+import applyCaseMiddleware from 'axios-case-converter';
 import { HttpMethod } from '../enums';
+
+const axios = applyCaseMiddleware(ax.create());
 
 export const apiRequest = <Response>(
   url: string,

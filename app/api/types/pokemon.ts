@@ -3,7 +3,7 @@ export type PokemonObjectSimplified = {
   url: string;
 };
 
-export interface PokemonObjectFull {
+export type PokemonObjectFull = {
   id: number;
   name: string;
   baseExperience: number;
@@ -23,44 +23,44 @@ export interface PokemonObjectFull {
   types: Type[];
 }
 
-export interface Ability {
+export type Ability = {
   isHidden: boolean;
   slot: number;
   ability: Species;
 }
 
-export interface Species {
+export type Species = {
   name: string;
   url: string;
 }
 
-export interface GameIndex {
+export type GameIndex = {
   gameIndex: number;
   version: Species;
 }
 
-export interface HeldItem {
+export type HeldItem = {
   item: Species;
   versionDetails: VersionDetail[];
 }
 
-export interface VersionDetail {
+export type VersionDetail = {
   rarity: number;
   version: Species;
 }
 
-export interface Move {
+export type Move = {
   move: Species;
   versionGroupDetails: VersionGroupDetail[];
 }
 
-export interface VersionGroupDetail {
+export type VersionGroupDetail = {
   levelLearnedAt: number;
   versionGroup: Species;
   moveLearnMethod: Species;
 }
 
-export interface Sprites {
+export type Sprites = {
   backFemale: string;
   backShinyFemale: string;
   backDefault: string;
@@ -73,15 +73,15 @@ export interface Sprites {
   versions: Versions;
 }
 
-export interface Other {
+export type Other = {
   dreamWorld: DreamWorld;
   officialArtwork: DreamWorld;
 }
 
-export interface DreamWorld {
+export type DreamWorld = {
 }
 
-export interface Versions {
+export type Versions = {
   generationOne: GenerationOne;
   generationTwo: GenerationTwo;
   generationThree: GenerationThree;
@@ -92,54 +92,54 @@ export interface Versions {
   generationEight: GenerationEight;
 }
 
-export interface GenerationOne {
+export type GenerationOne = {
   redBlue: DreamWorld;
   yellow: DreamWorld;
 }
 
-export interface GenerationTwo {
+export type GenerationTwo = {
   crystal: DreamWorld;
   gold: DreamWorld;
   silver: DreamWorld;
 }
 
-export interface GenerationThree {
+export type GenerationThree = {
   emerald: DreamWorld;
   fireRedLeafGreen: DreamWorld;
   rubySapphire: DreamWorld;
 }
 
-export interface GenerationFour {
+export type GenerationFour = {
   diamondPearl: DreamWorld;
   heartGoldSoulSilver: DreamWorld;
   platinum: DreamWorld;
 }
 
-export interface GenerationFive {
+export type GenerationFive = {
   blackWhite: DreamWorld;
 }
 
-export interface GenerationSeven {
+export type GenerationSeven = {
   icons: DreamWorld;
   ultraSunUltraMoon: DreamWorld;
 }
 
-export interface GenerationEight {
+export type GenerationEight = {
   icons: DreamWorld;
 }
 
-export interface Stat {
+export type Stat = {
   baseStat: number;
   effort: number;
   stat: Species;
 }
 
-export interface Type {
+export type Type = {
   slot: number;
   type: Species;
 }
 
-export interface PokemonSpeciesObjectFull {
+export type PokemonSpeciesObjectFull = {
   id: number;
   name: string;
   order: number;
@@ -152,15 +152,15 @@ export interface PokemonSpeciesObjectFull {
   hatchCounter: number;
   hasGenderDifferences: boolean;
   formsSwitchable: boolean;
-  growthRate: Color;
+  growthRate: NameWithURL;
   pokedexNumbers: PokedexNumber[];
-  eggGroups: Color[];
-  color: Color;
-  shape: Color;
-  evolvesFromSpecies: Color;
+  eggGroups: NameWithURL[];
+  color: NameWithURL;
+  shape: NameWithURL;
+  evolvesFromSpecies: NameWithURL;
   evolutionChain: EvolutionChain;
   habitat: null;
-  generation: Color;
+  generation: NameWithURL;
   names: Name[];
   flavorTextEntries: FlavorTextEntry[];
   formDescriptions: FormDescription[];
@@ -168,42 +168,47 @@ export interface PokemonSpeciesObjectFull {
   varieties: Variety[];
 }
 
-export interface Color {
+export type NameWithURL = {
   name: string;
   url: string;
 }
 
-export interface EvolutionChain {
+export type Language = {
+  name: string;
   url: string;
 }
 
-export interface FlavorTextEntry {
+export type EvolutionChain = {
+  url: string;
+}
+
+export type FlavorTextEntry = {
   flavorText: string;
-  language: Color;
-  version: Color;
+  language: Language;
+  version: NameWithURL;
 }
 
-export interface FormDescription {
+export type FormDescription = {
   description: string;
-  language: Color;
+  language: Language;
 }
 
-export interface Genus {
+export type Genus = {
   genus: string;
-  language: Color;
+  language: Language;
 }
 
-export interface Name {
+export type Name = {
   name: string;
-  language: Color;
+  language: Language;
 }
 
-export interface PokedexNumber {
+export type PokedexNumber = {
   entryNumber: number;
-  pokedex: Color;
+  pokedex: NameWithURL;
 }
 
-export interface Variety {
+export type Variety = {
   isDefault: boolean;
-  pokemon: Color;
+  pokemon: NameWithURL;
 }

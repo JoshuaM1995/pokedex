@@ -7,6 +7,12 @@ const PokedexEntryEvolutionTab = () => {
     <Timeline
       data={[
         {
+          time: 'Level 1',
+          title: 'Bulbasaur',
+          description: '#001',
+          icon: require('../../../../assets/images/pokemon/1.png'),
+        },
+        {
           time: 'Level 16',
           title: 'Ivysaur',
           description: '#002',
