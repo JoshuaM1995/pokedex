@@ -42,9 +42,8 @@ export const PokedexEntryScreen = () => {
     { enabled: !!pokemonSpecies },
   );
   const pokemonEvolution = pokemonEvolutionQuery.data?.data;
+  const pokemonColorName = pokemonSpecies?.color.name ?? '';
   const pokemonColor = pokemonSpecies ? color.palette[pokemonSpecies.color.name] : '';
-
-  console.log({ pokemonSpecies });
 
   // Set the navigation header to match the color of the pokemon
   navigation.setOptions({
@@ -125,7 +124,7 @@ export const PokedexEntryScreen = () => {
           </Tab.Screen>
           <Tab.Screen name="Base Stats">
             {() =>
-              <PokedexEntryBaseStatsTab info={pokemonInfo} />}
+              <PokedexEntryBaseStatsTab info={pokemonInfo} colorName={pokemonColorName} />}
           </Tab.Screen>
           <Tab.Screen name="Evolutions">
             {() => (

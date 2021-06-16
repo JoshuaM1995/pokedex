@@ -1,6 +1,9 @@
 import { StyleProp, ViewStyle } from 'react-native';
+import { ProgressBarPresetNames } from '../progress-bar/progress-bar.presets';
 
 export default interface PokemonStatProps {
+  progressBarPreset: ProgressBarPresetNames;
+
   /**
    * The name of the stat
    */
@@ -20,5 +23,5 @@ export default interface PokemonStatProps {
   /**
    * An optional style override useful for padding & margin.
    */
-  style?: StyleProp<ViewStyle>
-};
+  style?: StyleProp<ViewStyle>;
+}

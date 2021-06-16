@@ -6,9 +6,10 @@ import { PokemonStat } from '../../../components';
 
 type PokedexEntryBaseStatsTabProps = {
   info: PokemonObjectFull | undefined;
+  colorName: string;
 };
 
-const PokedexEntryBaseStatsTab = ({ info }: PokedexEntryBaseStatsTabProps) => {
+const PokedexEntryBaseStatsTab = ({ info, colorName }: PokedexEntryBaseStatsTabProps) => {
   const hpStat = info?.stats.find(({ stat: { name } }) => name === StatName.HP).baseStat ?? 0;
   const attackStat = info?.stats.find(({ stat: { name } }) => name === StatName.Attack).baseStat ?? 0;
   const defenseStat = info?.stats.find(({ stat: { name } }) => name === StatName.Defense).baseStat ?? 0;
@@ -19,13 +20,13 @@ const PokedexEntryBaseStatsTab = ({ info }: PokedexEntryBaseStatsTabProps) => {
 
   return (
     <View>
-      <PokemonStat name="HP" value={hpStat} max={100} />
-      <PokemonStat name="Attack" value={attackStat} max={100} />
-      <PokemonStat name="Defense" value={defenseStat} max={100} />
-      <PokemonStat name="Sp. Atk" value={specialAttackStat} max={100} />
-      <PokemonStat name="Sp. Def" value={specialDefenseStat} max={100} />
-      <PokemonStat name="Speed" value={speedStat} max={100} />
-      <PokemonStat name="Total" value={totalStat} max={600} />
+      <PokemonStat progressBarPreset={colorName} name="HP" value={hpStat} max={100} />
+      <PokemonStat progressBarPreset={colorName} name="Attack" value={attackStat} max={100} />
+      <PokemonStat progressBarPreset={colorName} name="Defense" value={defenseStat} max={100} />
+      <PokemonStat progressBarPreset={colorName} name="Sp. Atk" value={specialAttackStat} max={100} />
+      <PokemonStat progressBarPreset={colorName} name="Sp. Def" value={specialDefenseStat} max={100} />
+      <PokemonStat progressBarPreset={colorName} name="Speed" value={speedStat} max={100} />
+      <PokemonStat progressBarPreset={colorName} name="Total" value={totalStat} max={600} />
     </View>
   );
 };
