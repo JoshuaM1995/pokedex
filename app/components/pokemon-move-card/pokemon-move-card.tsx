@@ -34,7 +34,7 @@ export const PokemonMoveCard = ({
   powerPointsValue,
 }: PokemonMoveCardProps) => {
   return (
-    <View style={{ width: '85%', marginBottom: 10 }}>
+    <View style={{ width: '85%', marginBottom: 15 }}>
       <div style={{ ...moveHeaderStyle, ...sharedStyles }}>
         <Text>{`(${moveLevel}) ${moveName}`}</Text>
         <Text>{damageClass}</Text>
