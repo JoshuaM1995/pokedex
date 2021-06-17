@@ -1,4 +1,4 @@
-import { CSSProperties } from 'react';
+import { Nullable } from '../../types';
 
 export interface PokemonMoveCardProps {
     moveName: string;
@@ -6,11 +6,11 @@ export interface PokemonMoveCardProps {
     moveLevel: number;
 
     // TODO: Convert to enum/type alias
-    moveType: string;
+    damageClass: string;
 
-    attackValue: number;
+    attackValue: Nullable<number>;
 
-    accuracyPercentage: number;
+    accuracyPercentage: Nullable<number>;
 
-    powerPointsValue: number;
+    powerPointsValue: Nullable<number>;
   }

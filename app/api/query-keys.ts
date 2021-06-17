@@ -3,4 +3,5 @@ export enum QueryKey {
     Pokemon = 'pokemon',
     PokemonSpecies = 'pokemon_species',
     PokemonEvolution = 'pokemon_evolution',
+    PokemonMove = 'pokemon_move',
 }

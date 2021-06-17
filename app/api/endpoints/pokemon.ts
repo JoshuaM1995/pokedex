@@ -1,4 +1,4 @@
-import { PokemonEvolutionObjectFull } from '../types/pokemon';
+import { PokemonEvolutionObjectFull, PokemonMoveObjectFull } from '../types/pokemon';
 import { PokemonObjectFull, PokemonObjectSimplified, PokemonSpeciesObjectFull } from '../types';
 import { HttpMethod } from '../../enums';
 import apiRequest from '../api-request';
@@ -21,4 +21,8 @@ export const getPokemonSpeciesById = (id: number) => {
 
 export const getPokemonEvolutionChainById = (id: number) => {
   return apiRequest<PokemonEvolutionObjectFull>(`/evolution-chain/${id}`, HttpMethod.GET);
+};
+
+export const getPokemonMoveByName = (name: string) => {
+  return apiRequest<PokemonMoveObjectFull>(`/move/${name}`, HttpMethod.GET);
 };

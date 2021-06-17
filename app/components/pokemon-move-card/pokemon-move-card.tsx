@@ -28,7 +28,7 @@ const statStyle: StyleProp<TextStyle> = {
 export const PokemonMoveCard = ({
   moveName,
   moveLevel,
-  moveType,
+  damageClass,
   attackValue,
   accuracyPercentage,
   powerPointsValue,
@@ -37,13 +37,13 @@ export const PokemonMoveCard = ({
     <View style={{ width: '85%', marginBottom: 10 }}>
       <div style={{ ...moveHeaderStyle, ...sharedStyles }}>
         <Text>{`(${moveLevel}) ${moveName}`}</Text>
-        <Text>{moveType}</Text>
+        <Text>{damageClass}</Text>
       </div>
 
       <div style={{ ...moveBodyStyle, ...sharedStyles }}>
-        <Text style={statStyle}>{`Att: ${attackValue}`}</Text>
-        <Text style={statStyle}>{`Acc: ${accuracyPercentage}%`}</Text>
-        <Text style={statStyle}>{`PP: ${powerPointsValue}`}</Text>
+        <Text style={statStyle}>{`Att: ${attackValue ?? 0}`}</Text>
+        <Text style={statStyle}>{`Acc: ${accuracyPercentage ?? 0}%`}</Text>
+        <Text style={statStyle}>{`PP: ${powerPointsValue ?? 0}`}</Text>
       </div>
     </View>
   );

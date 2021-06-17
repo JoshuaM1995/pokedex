@@ -57,8 +57,6 @@ export const PokedexEntryScreen = () => {
     },
   });
 
-  console.log('%c pokedex-entry-screen', 'color: lightgreen', { pokemonInfo, pokemonSpecies });
-
   return (
     <Screen preset="scroll">
       <PokemonHeaderSection style={{
