@@ -21,7 +21,9 @@ const moveBodyStyle: CSSProperties = {
   borderBottomRightRadius: 5,
 };
 
-const statStyle: StyleProp<TextStyle> = {};
+const statStyle: StyleProp<TextStyle> = {
+  marginRight: 10,
+};
 
 export const PokemonMoveCard = ({
   moveName,
