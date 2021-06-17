@@ -1,6 +1,5 @@
-import * as React from 'react';
-import { CSSProperties } from 'react';
-import { View } from 'react-native';
+import React, { CSSProperties } from 'react';
+import { StyleProp, TextStyle, View } from 'react-native';
 import { Text } from '..';
 import { PokemonMoveCardProps } from './pokemon-move-card.props';
 
@@ -22,6 +21,8 @@ const moveBodyStyle: CSSProperties = {
   borderBottomRightRadius: 5,
 };
 
+const statStyle: StyleProp<TextStyle> = {};
+
 export const PokemonMoveCard = ({
   moveName,
   moveLevel,
@@ -38,9 +39,9 @@ export const PokemonMoveCard = ({
       </div>
 
       <div style={{ ...moveBodyStyle, ...sharedStyles }}>
-        <Text>{`Att: ${attackValue}`}</Text>
-        <Text>{`Acc: ${accuracyPercentage}%`}</Text>
-        <Text>{`PP: ${powerPointsValue}`}</Text>
+        <Text style={statStyle}>{`Att: ${attackValue}`}</Text>
+        <Text style={statStyle}>{`Acc: ${accuracyPercentage}%`}</Text>
+        <Text style={statStyle}>{`PP: ${powerPointsValue}`}</Text>
       </div>
     </View>
   );
