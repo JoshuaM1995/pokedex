@@ -3,7 +3,7 @@ import PokemonStatProps from './pokemon-stat.props';
 import { Text } from '..';
 import ProgressBar from '../progress-bar/progress-bar';
 
-export const PokemonStat = ({ name, value }: PokemonStatProps) => {
+export const PokemonStat = ({ name, value, progressBarPreset }: PokemonStatProps) => {
   return (
     <div style={{
       display: 'flex',
@@ -16,7 +16,7 @@ export const PokemonStat = ({ name, value }: PokemonStatProps) => {
       <Text preset="bold" style={{ flex: 0.5 }}>{value}</Text>
 
       <div style={{ flex: 3 }}>
-        <ProgressBar value={value} />
+        <ProgressBar preset={progressBarPreset} value={value} />
       </div>
     </div>
   );

@@ -29,11 +29,6 @@ const PokedexEntryAboutTab = ({ info, species }: PokedexEntryAboutTabProps) => {
   const femaleGenderPercentage = species?.genderRate ? (species.genderRate / 8) * 100 : 0;
   const maleGenderPercentage = 100 - femaleGenderPercentage;
 
-  console.log('PokedexEntryAboutTab', {
-    info,
-    species,
-  });
-
   return (
     <>
       <InfoSection style={{ width: '65%' }}>

@@ -1,4 +1,5 @@
-import { CSSProperties } from 'styled-components';
+import { ViewStyle, StyleProp } from 'react-native';
+import { ProgressBarPresetNames } from './progress-bar.presets';
 
 export default interface ProgressBarProps {
   /**
@@ -9,5 +10,7 @@ export default interface ProgressBarProps {
   /**
    * An optional style override useful for padding & margin.
    */
-  style?: CSSProperties;
-}
+  style?: StyleProp<ViewStyle>;
+
+  preset: ProgressBarPresetNames;
+};

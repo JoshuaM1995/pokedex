@@ -12,12 +12,12 @@ export type PokemonObjectFull = {
   order: number;
   weight: number;
   abilities: Ability[];
-  forms: Species[];
+  forms: NameWithURL[];
   gameIndices: GameIndex[];
   heldItems: HeldItem[];
   locationAreaEncounters: string;
   moves: Move[];
-  species: Species;
+  species: NameWithURL;
   sprites: Sprites;
   stats: Stat[];
   types: Type[];
@@ -26,38 +26,33 @@ export type PokemonObjectFull = {
 export type Ability = {
   isHidden: boolean;
   slot: number;
-  ability: Species;
-}
-
-export type Species = {
-  name: string;
-  url: string;
+  ability: NameWithURL;
 }
 
 export type GameIndex = {
   gameIndex: number;
-  version: Species;
+  version: NameWithURL;
 }
 
 export type HeldItem = {
-  item: Species;
+  item: NameWithURL;
   versionDetails: VersionDetail[];
 }
 
 export type VersionDetail = {
   rarity: number;
-  version: Species;
+  version: NameWithURL;
 }
 
 export type Move = {
-  move: Species;
+  move: NameWithURL;
   versionGroupDetails: VersionGroupDetail[];
 }
 
 export type VersionGroupDetail = {
   levelLearnedAt: number;
-  versionGroup: Species;
-  moveLearnMethod: Species;
+  versionGroup: NameWithURL;
+  moveLearnMethod: NameWithURL;
 }
 
 export type Sprites = {
@@ -150,7 +145,7 @@ export type Stat = {
 
 export type Type = {
   slot: number;
-  type: Species;
+  type: NameWithURL;
 }
 
 export type PokemonSpeciesObjectFull = {
@@ -212,11 +207,6 @@ export type Genus = {
   language: Language;
 }
 
-export type Name = {
-  name: string;
-  language: Language;
-}
-
 export type PokedexNumber = {
   entryNumber: number;
   pokedex: NameWithURL;
@@ -235,14 +225,14 @@ export interface PokemonEvolutionObjectFull {
 
 export interface Chain {
   isBaby: boolean;
-  species: Species;
+  species: NameWithURL;
   evolutionDetails: EvolutionDetail[] | null;
   evolvesTo: Chain[];
 }
 
 export interface EvolutionDetail {
   item: null;
-  trigger: Species;
+  trigger: NameWithURL;
   gender: null;
   heldItem: null;
   knownMove: null;
@@ -259,4 +249,69 @@ export interface EvolutionDetail {
   timeOfDay: string;
   tradeSpecies: null;
   turnUpsideDown: boolean;
+}
+
+export interface PokemonMoveObjectFull {
+  id: number;
+  name: string;
+  accuracy: number;
+  effectChance: null;
+  pp: number;
+  priority: number;
+  power: number;
+  contestCombos: ContestCombos;
+  contestType: NameWithURL;
+  contestEffect: ContestEffect;
+  damageClass:NameWithURL;
+  effectEntries: EffectEntry[];
+  effectChanges: any[];
+  generation:NameWithURL;
+  meta: Meta;
+  names: Name[];
+  pastValues: any[];
+  statChanges: any[];
+  superContestEffect: ContestEffect;
+  target:NameWithURL;
+  type:NameWithURL;
+  flavorTextEntries: FlavorTextEntry[];
+}
+
+export interface ContestCombos {
+  normal: Normal;
+  super: Normal;
+}
+
+export interface Normal {
+  useBefore:NameWithURL[] | null;
+  useAfter: null;
+}
+
+export interface ContestEffect {
+  url: string;
+}
+
+export interface EffectEntry {
+  effect: string;
+  shortEffect: string;
+  language:NameWithURL;
+}
+
+export interface Meta {
+  ailment:NameWithURL;
+  category:NameWithURL;
+  minHits: null;
+  maxHits: null;
+  minTurns: null;
+  maxTurns: null;
+  drain: number;
+  healing: number;
+  critRate: number;
+  ailmentChance: number;
+  flinchChance: number;
+  statChance: number;
+}
+
+export interface Name {
+  name: string;
+  language:NameWithURL;
 }
