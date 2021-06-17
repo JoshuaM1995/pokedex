@@ -13,6 +13,7 @@ export * from './navigation-card/navigation-card';
 export * from './page/page';
 export * from './section/section';
 export * from './pokedex-card/pokedex-card';
-export * from "./type-tag/type-tag"
-export * from "./pokemon-stat/pokemon-stat"
-export * from "./progress-bar/progress-bar"
+export * from './type-tag/type-tag';
+export * from './pokemon-stat/pokemon-stat';
+export * from './progress-bar/progress-bar';
+export * from "./pokemon-move-card/pokemon-move-card"

@@ -1,11 +1,34 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { ScrollView } from 'react-native';
+import { PokemonObjectFull } from '../../../api/types';
+import { PokemonMoveCard } from '../../../components';
+import { useQueriesTyped as useQueries } from '../../types';
 
-const PokedexEntryMovesTab = () => {
+type PokedexEntryMovesTabProps = {
+  info: PokemonObjectFull;
+};
+
+const PokedexEntryMovesTab = ({ info }: PokedexEntryMovesTabProps) => {
   return (
-    <View>
-      <Text>PokedexEntryMovesTab</Text>
-    </View>
+    <ScrollView>
+      <PokemonMoveCard
+        moveName="Tackle"
+        moveLevel={3}
+        moveType="Physical"
+        attackValue={40}
+        accuracyPercentage={100}
+        powerPointsValue={35}
+      />
+
+      <PokemonMoveCard
+        moveName="Tackle"
+        moveLevel={3}
+        moveType="Physical"
+        attackValue={40}
+        accuracyPercentage={100}
+        powerPointsValue={35}
+      />
+    </ScrollView>
   );
 };
 

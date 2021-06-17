@@ -19,7 +19,7 @@ const PokedexEntryBaseStatsTab = ({ info, colorName }: PokedexEntryBaseStatsTabP
   const totalStat = _.sum([hpStat, attackStat, defenseStat, specialAttackStat, specialDefenseStat, speedStat]);
 
   return (
-    <View>
+    <View style={{ width: '85%' }}>
       <PokemonStat progressBarPreset={colorName} name="HP" value={hpStat} max={100} />
       <PokemonStat progressBarPreset={colorName} name="Attack" value={attackStat} max={100} />
       <PokemonStat progressBarPreset={colorName} name="Defense" value={defenseStat} max={100} />

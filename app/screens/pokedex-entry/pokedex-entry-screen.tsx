@@ -57,6 +57,8 @@ export const PokedexEntryScreen = () => {
     },
   });
 
+  console.log('%c pokedex-entry-screen', 'color: lightgreen', { pokemonInfo, pokemonSpecies });
+
   return (
     <Screen preset="scroll">
       <PokemonHeaderSection style={{
@@ -131,7 +133,7 @@ export const PokedexEntryScreen = () => {
               <PokedexEntryEvolutionsTab evolution={pokemonEvolution} color={pokemonColor} />
             )}
           </Tab.Screen>
-          <Tab.Screen name="Moves">{() => <PokedexEntryMovesTab />}</Tab.Screen>
+          <Tab.Screen name="Moves">{() => <PokedexEntryMovesTab info={pokemonInfo} />}</Tab.Screen>
         </Tab.Navigator>
       </PokemonInfoSection>
     </Screen>
