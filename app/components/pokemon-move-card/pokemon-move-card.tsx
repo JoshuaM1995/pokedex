@@ -1,8 +1,10 @@
 import React, { CSSProperties } from 'react';
 import { StyleProp, TextStyle, View } from 'react-native';
 import { Text } from '..';
+import { color } from '../../theme';
 import { PokemonMoveCardProps } from './pokemon-move-card.props';
 
+// #region Styles
 const sharedStyles: CSSProperties = {
   padding: 8,
 };
@@ -25,6 +27,20 @@ const statStyle: StyleProp<TextStyle> = {
   marginRight: 10,
 };
 
+const moveLevelStyle: CSSProperties = {
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  backgroundColor: color.palette.white,
+  padding: 5,
+  borderRadius: 20,
+  width: 12,
+  height: 12,
+  textAlign: 'center',
+  marginRight: 8,
+};
+// #endregion
+
 export const PokemonMoveCard = ({
   moveName,
   moveLevel,
@@ -36,7 +52,15 @@ export const PokemonMoveCard = ({
   return (
     <View style={{ width: '85%', marginBottom: 15 }}>
       <div style={{ ...moveHeaderStyle, ...sharedStyles }}>
-        <Text>{`(${moveLevel}) ${moveName}`}</Text>
+        <Text>
+          <div style={{ display: 'flex', alignItems: 'center' }}>
+            <div style={moveLevelStyle}>
+              {moveLevel || '-'}
+            </div>
+            {' '}
+            {moveName}
+          </div>
+        </Text>
         <Text>{damageClass}</Text>
       </div>
 
