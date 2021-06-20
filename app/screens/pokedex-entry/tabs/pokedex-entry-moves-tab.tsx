@@ -1,6 +1,7 @@
 import _ from 'lodash';
-import React from 'react';
+import React, { useState } from 'react';
 import { ScrollView } from 'react-native';
+import { Picker } from '@react-native-picker/picker';
 import { QueryKey } from '../../../api';
 import { getPokemonMoveByName } from '../../../api/endpoints/pokemon';
 import { PokemonObjectFull } from '../../../api/types';
@@ -13,6 +14,8 @@ type PokedexEntryMovesTabProps = {
 };
 
 const PokedexEntryMovesTab = ({ info }: PokedexEntryMovesTabProps) => {
+  const [selectedValue, setSelectedValue] = useState<number | string>();
+
   const pokemonMovesQueries = useQueries(
     info?.moves.map(({ move: { name, url } }) => {
       return {
@@ -30,27 +33,29 @@ const PokedexEntryMovesTab = ({ info }: PokedexEntryMovesTabProps) => {
   }).sort((a, b) => a.moveLevel - b.moveLevel);
 
   return (
-    <ScrollView>
-      {pokemonMovesResultsWithLevelsLearnedAt?.map(({
-        name,
-        damageClass,
-        power,
-        accuracy,
-        pp,
-        moveLevel,
-      }) => {
-        return (
-          <PokemonMoveCard
-            moveName={_.startCase(name)}
-            moveLevel={moveLevel}
-            damageClass={_.capitalize(damageClass.name)}
-            attackValue={power}
-            accuracyPercentage={accuracy}
-            powerPointsValue={pp}
-          />
-        );
-      })}
-    </ScrollView>
+    <>
+      <ScrollView>
+        {pokemonMovesResultsWithLevelsLearnedAt?.map(({
+          name,
+          damageClass,
+          power,
+          accuracy,
+          pp,
+          moveLevel,
+        }) => {
+          return (
+            <PokemonMoveCard
+              moveName={_.startCase(name)}
+              moveLevel={moveLevel}
+              damageClass={_.capitalize(damageClass.name)}
+              attackValue={power}
+              accuracyPercentage={accuracy}
+              powerPointsValue={pp}
+            />
+          );
+        })}
+      </ScrollView>
+    </>
   );
 };
 
