@@ -26,6 +26,7 @@ export const PokedexCard = ({
   const navigation = useNavigation<NavigationProp<PrimaryParamList>>();
   const viewStyle = viewPresets[preset] || viewPresets.primary;
   const viewStyles = [viewStyle, styleOverride];
+  const imageSource = require(`../../../assets/images/pokemon/${id}.png`);
 
   return (
     <Pressable
@@ -34,7 +35,7 @@ export const PokedexCard = ({
       {...pressableProps}
     >
       <ImageBackground
-        source={require(`../../../assets/images/pokemon/${id}.png`)}
+        source={imageSource}
         style={IMAGE_BACKGROUND}
         imageStyle={IMAGE_BACKGROUND_STYLE}
       >

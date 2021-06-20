@@ -27,7 +27,6 @@ import {
 } from './navigators';
 import { RootStore, RootStoreProvider, setupRootStore } from './models';
 import { ToggleStorybook } from '../storybook/toggle-storybook';
-import './app.css';
 import './config/icons';
 
 // This puts screens in a native ViewController or Activity. If you want fully native
