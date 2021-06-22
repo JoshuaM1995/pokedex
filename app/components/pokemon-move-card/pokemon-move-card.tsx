@@ -2,6 +2,7 @@ import React, { CSSProperties } from 'react';
 import { StyleProp, TextStyle, View } from 'react-native';
 import { Text } from '..';
 import { color } from '../../theme';
+import { Flex } from '../flex/flex';
 import { PokemonMoveCardProps } from './pokemon-move-card.props';
 
 // #region Styles
@@ -53,13 +54,13 @@ export const PokemonMoveCard = ({
     <View style={{ width: '85%', marginBottom: 15 }}>
       <div style={{ ...moveHeaderStyle, ...sharedStyles }}>
         <Text>
-          <div style={{ display: 'flex', alignItems: 'center' }}>
+          <Flex style={{ alignItems: 'center' }}>
             <div style={moveLevelStyle}>
               {moveLevel || '-'}
             </div>
             {' '}
             {moveName}
-          </div>
+          </Flex>
         </Text>
         <Text>{damageClass}</Text>
       </div>

@@ -20,6 +20,7 @@ import PokedexEntryMovesTab from './tabs/pokedex-entry-moves-tab';
 import { QueryKey } from '../../api';
 import { getPokemonById, getPokemonEvolutionChainById, getPokemonSpeciesById } from '../../api/endpoints/pokemon';
 import { images, getIdFromURL } from '../../utils';
+import { Flex } from '../../components/flex/flex';
 
 const PokemonHeaderSection = Section;
 const PokemonInfoSection = Section;
@@ -65,42 +66,38 @@ export const PokedexEntryScreen = () => {
         ...padding(20, 15, 80, 15),
       }}
       >
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <Flex style={{ justifyContent: 'space-between', alignItems: 'center' }}>
           <div>
             <Text preset="h2" style={{ color: color.palette.white }}>
               {_.capitalize(pokemonInfo?.name)}
             </Text>
 
-            <div style={{ display: 'flex', justifyContent: 'space-around' }}>
+            <Flex style={{ justifyContent: 'space-around' }}>
               {/* TODO: Navigate to type chart onPress */}
               {pokemonInfo?.types.map(({ type }) => (
                 <Pressable>
                   <TypeTag type={_.capitalize(type.name) as PokemonType} />
                 </Pressable>
               ))}
-            </div>
+            </Flex>
           </div>
 
           <Text preset="h5" style={{ color: color.palette.white, fontWeight: 'bold', marginRight: 10 }}>
             {`#${pokemonId.toString().padStart(3, '0')}`}
           </Text>
-        </div>
+        </Flex>
 
-        <div style={{
-          display: 'flex',
-          justifyContent: 'center',
-        }}
-        >
+        <Flex style={{ justifyContent: 'center' }}>
           <Image
             source={images.pokemon[pokemonId]}
             style={{
               height: 200,
               width: 200,
               position: 'absolute',
-              bottom: '0px',
+              bottom: 0,
             }}
           />
-        </div>
+        </Flex>
       </PokemonHeaderSection>
 
       <PokemonInfoSection style={{
