@@ -2,7 +2,7 @@ import * as React from 'react';
 import { storiesOf } from '@storybook/react-native';
 import { StoryScreen, Story, UseCase } from '../../../storybook/views';
 import { color } from '../../theme';
-import { FlexColumn } from './flex-row';
+import { FlexColumn } from './flex-column';
 
 storiesOf('Flex', module)
   .addDecorator((fn) => <StoryScreen>{fn()}</StoryScreen>)
