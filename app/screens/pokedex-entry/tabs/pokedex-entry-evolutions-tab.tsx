@@ -2,7 +2,7 @@ import _ from 'lodash';
 import React from 'react';
 import Timeline from 'react-native-timeline-flatlist';
 import { PokemonEvolutionObjectFull } from '../../../api/types';
-import { getIdFromURL } from '../../../utils';
+import { getIdFromURL, images } from '../../../utils';
 
 type PokedexEntryEvolutionsTabProps = {
   evolution: PokemonEvolutionObjectFull | undefined;
@@ -23,7 +23,7 @@ const PokedexEntryEvolutionsTab = ({ evolution, color }: PokedexEntryEvolutionsT
           title: _.capitalize(firstEvolution?.species.name),
           description: '#002',
           icon: firstEvolution?.species.url
-            ? require(`../../../../assets/images/pokemon/${firstEvolutionId}.png`)
+            ? images.pokemon[firstEvolutionId]
             : '',
         },
         {
@@ -31,7 +31,7 @@ const PokedexEntryEvolutionsTab = ({ evolution, color }: PokedexEntryEvolutionsT
           title: _.capitalize(secondEvolution?.species.name),
           description: '#003',
           icon: secondEvolution?.species.url
-            ? require(`../../../../assets/images/pokemon/${secondEvolutionId}.png`)
+            ? images.pokemon[secondEvolutionId]
             : '',
         },
       ]}

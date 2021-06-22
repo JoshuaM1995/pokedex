@@ -19,7 +19,7 @@ import PokedexEntryEvolutionsTab from './tabs/pokedex-entry-evolutions-tab';
 import PokedexEntryMovesTab from './tabs/pokedex-entry-moves-tab';
 import { QueryKey } from '../../api';
 import { getPokemonById, getPokemonEvolutionChainById, getPokemonSpeciesById } from '../../api/endpoints/pokemon';
-import { getIdFromURL } from '../../utils';
+import { images, getIdFromURL } from '../../utils';
 
 const PokemonHeaderSection = Section;
 const PokemonInfoSection = Section;
@@ -92,7 +92,7 @@ export const PokedexEntryScreen = () => {
         }}
         >
           <Image
-            source={require(`../../../assets/images/pokemon/${pokemonId}.png`)}
+            source={images.pokemon[pokemonId]}
             style={{
               height: 200,
               width: 200,

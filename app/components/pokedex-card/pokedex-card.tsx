@@ -12,6 +12,7 @@ import {
 } from './pokedex-card.presets';
 import { PokedexCardProps } from './pokedex-card.props';
 import { PrimaryParamList, RouteName } from '../../navigators';
+import { images } from '../../utils';
 
 export const PokedexCard = ({
   types,
@@ -26,7 +27,6 @@ export const PokedexCard = ({
   const navigation = useNavigation<NavigationProp<PrimaryParamList>>();
   const viewStyle = viewPresets[preset] || viewPresets.primary;
   const viewStyles = [viewStyle, styleOverride];
-  const imageSource = require(`../../../assets/images/pokemon/${id}.png`);
 
   return (
     <Pressable
@@ -35,7 +35,7 @@ export const PokedexCard = ({
       {...pressableProps}
     >
       <ImageBackground
-        source={imageSource}
+        source={images.pokemon[id]}
         style={IMAGE_BACKGROUND}
         imageStyle={IMAGE_BACKGROUND_STYLE}
       >
