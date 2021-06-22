@@ -1,12 +1,13 @@
 import React from 'react';
+import { View } from 'react-native';
 import PokemonStatProps from './pokemon-stat.props';
 import { Text } from '..';
 import ProgressBar from '../progress-bar/progress-bar';
+import { Flex } from '../flex/flex';
 
 export const PokemonStat = ({ name, value, progressBarPreset }: PokemonStatProps) => {
   return (
-    <div style={{
-      display: 'flex',
+    <Flex style={{
       justifyContent: 'space-between',
       alignItems: 'center',
       marginBottom: 15,
@@ -15,9 +16,9 @@ export const PokemonStat = ({ name, value, progressBarPreset }: PokemonStatProps
       <Text style={{ flex: 1 }}>{name}</Text>
       <Text preset="bold" style={{ flex: 0.5 }}>{value}</Text>
 
-      <div style={{ flex: 3 }}>
+      <View style={{ flex: 3 }}>
         <ProgressBar preset={progressBarPreset} value={value} />
-      </div>
-    </div>
+      </View>
+    </Flex>
   );
 };

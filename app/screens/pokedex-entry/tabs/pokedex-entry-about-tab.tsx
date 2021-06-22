@@ -1,6 +1,8 @@
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import React from 'react';
-import { TextStyle } from 'react-native';
+import {
+  StyleProp, TextStyle, View, ViewStyle,
+} from 'react-native';
 import convert from 'convert-units';
 import _ from 'lodash';
 import { PokemonObjectFull, PokemonSpeciesObjectFull } from '../../../api/types';
@@ -11,7 +13,7 @@ import { Flex } from '../../../components/flex/flex';
 const InfoSection = Section;
 const BreedingSection = Section;
 
-const wrapperStyle = { marginBottom: 15 };
+const wrapperStyle: StyleProp<ViewStyle> = { marginBottom: 15 };
 const statStyle: TextStyle = { marginLeft: 50, fontWeight: 'bold', textAlign: 'left' };
 
 type PokedexEntryAboutTabProps = {
@@ -35,25 +37,25 @@ const PokedexEntryAboutTab = ({ info, species }: PokedexEntryAboutTabProps) => {
       <InfoSection style={{ width: '65%' }}>
         <Text preset="h5" style={{ marginBottom: 20 }}>Information</Text>
 
-        <div style={wrapperStyle}>
+        <View style={wrapperStyle}>
           <Text>Species</Text>
           <Text style={statStyle}>{pokemonSpecies.replace(' Pokémon', '')}</Text>
-        </div>
+        </View>
 
-        <div style={wrapperStyle}>
+        <View style={wrapperStyle}>
           <Text>Height</Text>
           <Text style={statStyle}>{`${feet}'${inches}" (${heightCm}cm)`}</Text>
-        </div>
+        </View>
 
-        <div style={wrapperStyle}>
+        <View style={wrapperStyle}>
           <Text>Weight</Text>
           <Text style={statStyle}>{`${weightLbs}lbs (${weightKg}kg)`}</Text>
-        </div>
+        </View>
 
-        <div style={wrapperStyle}>
+        <View style={wrapperStyle}>
           <Text>Abilities</Text>
           <Text style={statStyle}>{info?.abilities.map(({ ability }) => _.startCase(ability.name)).join(', ')}</Text>
-        </div>
+        </View>
       </InfoSection>
 
       <BreedingSection style={{ width: '65%' }}>
@@ -71,12 +73,12 @@ const PokedexEntryAboutTab = ({ info, species }: PokedexEntryAboutTabProps) => {
           </Text>
         </Flex>
 
-        <div style={wrapperStyle}>
+        <View style={wrapperStyle}>
           <Text>Egg Groups</Text>
           <Text style={statStyle}>
             {species?.eggGroups?.map(({ name }) => _.capitalize(name)).join(', ')}
           </Text>
-        </div>
+        </View>
       </BreedingSection>
     </>
   );

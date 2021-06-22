@@ -2,7 +2,7 @@ import React from 'react';
 import {
   NavigationProp, RouteProp, useNavigation, useRoute,
 } from '@react-navigation/native';
-import { Pressable, Image } from 'react-native';
+import { Pressable, Image, View } from 'react-native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { useQuery } from 'react-query';
 import _ from 'lodash';
@@ -67,7 +67,7 @@ export const PokedexEntryScreen = () => {
       }}
       >
         <Flex style={{ justifyContent: 'space-between', alignItems: 'center' }}>
-          <div>
+          <View>
             <Text preset="h2" style={{ color: color.palette.white }}>
               {_.capitalize(pokemonInfo?.name)}
             </Text>
@@ -80,7 +80,7 @@ export const PokedexEntryScreen = () => {
                 </Pressable>
               ))}
             </Flex>
-          </div>
+          </View>
 
           <Text preset="h5" style={{ color: color.palette.white, fontWeight: 'bold', marginRight: 10 }}>
             {`#${pokemonId.toString().padStart(3, '0')}`}
