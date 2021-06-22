@@ -20,7 +20,7 @@ import PokedexEntryMovesTab from './tabs/pokedex-entry-moves-tab';
 import { QueryKey } from '../../api';
 import { getPokemonById, getPokemonEvolutionChainById, getPokemonSpeciesById } from '../../api/endpoints/pokemon';
 import { images, getIdFromURL } from '../../utils';
-import { Flex } from '../../components/flex/flex';
+import { FlexRow } from '../../components/flex-row/flex-row';
 
 const PokemonHeaderSection = Section;
 const PokemonInfoSection = Section;
@@ -66,28 +66,28 @@ export const PokedexEntryScreen = () => {
         ...padding(20, 15, 80, 15),
       }}
       >
-        <Flex style={{ justifyContent: 'space-between', alignItems: 'center' }}>
+        <FlexRow style={{ justifyContent: 'space-between', alignItems: 'center' }}>
           <View>
             <Text preset="h2" style={{ color: color.palette.white }}>
               {_.capitalize(pokemonInfo?.name)}
             </Text>
 
-            <Flex style={{ justifyContent: 'space-around' }}>
+            <FlexRow style={{ justifyContent: 'space-around' }}>
               {/* TODO: Navigate to type chart onPress */}
               {pokemonInfo?.types.map(({ type }) => (
                 <Pressable>
                   <TypeTag type={_.capitalize(type.name) as PokemonType} />
                 </Pressable>
               ))}
-            </Flex>
+            </FlexRow>
           </View>
 
           <Text preset="h5" style={{ color: color.palette.white, fontWeight: 'bold', marginRight: 10 }}>
             {`#${pokemonId.toString().padStart(3, '0')}`}
           </Text>
-        </Flex>
+        </FlexRow>
 
-        <Flex style={{ justifyContent: 'center' }}>
+        <FlexRow style={{ justifyContent: 'center' }}>
           <Image
             source={images.pokemon[pokemonId]}
             style={{
@@ -97,7 +97,7 @@ export const PokedexEntryScreen = () => {
               bottom: 0,
             }}
           />
-        </Flex>
+        </FlexRow>
       </PokemonHeaderSection>
 
       <PokemonInfoSection style={{

@@ -8,7 +8,7 @@ import _ from 'lodash';
 import { PokemonObjectFull, PokemonSpeciesObjectFull } from '../../../api/types';
 import { Section, Text } from '../../../components';
 import { color } from '../../../theme';
-import { Flex } from '../../../components/flex/flex';
+import { FlexRow } from '../../../components/flex-row/flex-row';
 
 const InfoSection = Section;
 const BreedingSection = Section;
@@ -61,7 +61,7 @@ const PokedexEntryAboutTab = ({ info, species }: PokedexEntryAboutTabProps) => {
       <BreedingSection style={{ width: '65%' }}>
         <Text preset="h5" style={{ marginBottom: 20 }}>Breeding</Text>
 
-        <Flex style={{ justifyContent: 'space-between', marginBottom: 15 }}>
+        <FlexRow style={{ justifyContent: 'space-between', marginBottom: 15 }}>
           <Text>Gender</Text>
           <Text preset="bold">
             <FontAwesomeIcon icon="mars" color={color.gender.male} style={{ marginRight: 5 }} />
@@ -71,7 +71,7 @@ const PokedexEntryAboutTab = ({ info, species }: PokedexEntryAboutTabProps) => {
             <FontAwesomeIcon icon="venus" color={color.gender.female} style={{ marginRight: 5 }} />
             {`${femaleGenderPercentage}%`}
           </Text>
-        </Flex>
+        </FlexRow>
 
         <View style={wrapperStyle}>
           <Text>Egg Groups</Text>

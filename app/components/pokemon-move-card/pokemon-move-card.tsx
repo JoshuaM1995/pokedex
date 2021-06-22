@@ -4,7 +4,7 @@ import {
 } from 'react-native';
 import { Text } from '..';
 import { color } from '../../theme';
-import { Flex } from '../flex/flex';
+import { FlexRow } from '../flex-row/flex-row';
 import { PokemonMoveCardProps } from './pokemon-move-card.props';
 
 // #region Styles
@@ -56,13 +56,13 @@ export const PokemonMoveCard = ({
     <View style={{ width: '85%', marginBottom: 15 }}>
       <View style={{ ...moveHeaderStyle, ...sharedStyles }}>
         <Text>
-          <Flex style={{ alignItems: 'center' }}>
+          <FlexRow style={{ alignItems: 'center' }}>
             <View style={moveLevelStyle}>
               {moveLevel || '-'}
             </View>
             {' '}
             {moveName}
-          </Flex>
+          </FlexRow>
         </Text>
         <Text>{damageClass}</Text>
       </View>
