@@ -16,5 +16,6 @@ export * from './pokedex-card/pokedex-card';
 export * from './type-tag/type-tag';
 export * from './pokemon-stat/pokemon-stat';
 export * from './progress-bar/progress-bar';
-export * from "./pokemon-move-card/pokemon-move-card"
-export * from "./flex/flex"
+export * from './pokemon-move-card/pokemon-move-card';
+export * from './flex-row/flex-row';
+export * from './flex-column/flex-column';
