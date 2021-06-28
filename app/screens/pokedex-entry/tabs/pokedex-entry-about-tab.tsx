@@ -14,7 +14,8 @@ const InfoSection = Section;
 const BreedingSection = Section;
 
 const wrapperStyle: StyleProp<ViewStyle> = { marginBottom: 15 };
-const statStyle: TextStyle = { marginLeft: 50, fontWeight: 'bold', textAlign: 'left' };
+const informationNameStyle: StyleProp<TextStyle> = { width: 100 };
+const statStyle: TextStyle = { marginLeft: 50, fontWeight: 'bold' };
 
 type PokedexEntryAboutTabProps = {
   info: PokemonObjectFull | undefined;
@@ -34,35 +35,35 @@ const PokedexEntryAboutTab = ({ info, species }: PokedexEntryAboutTabProps) => {
 
   return (
     <>
-      <InfoSection style={{ width: '65%' }}>
+      <InfoSection style={{ width: '85%' }}>
         <Text preset="h5" style={{ marginBottom: 20 }}>Information</Text>
 
-        <View style={wrapperStyle}>
-          <Text>Species</Text>
+        <FlexRow style={wrapperStyle}>
+          <Text style={informationNameStyle}>Species</Text>
           <Text style={statStyle}>{pokemonSpecies.replace(' Pokémon', '')}</Text>
-        </View>
+        </FlexRow>
 
-        <View style={wrapperStyle}>
-          <Text>Height</Text>
+        <FlexRow style={wrapperStyle}>
+          <Text style={informationNameStyle}>Height</Text>
           <Text style={statStyle}>{`${feet}'${inches}" (${heightCm}cm)`}</Text>
-        </View>
+        </FlexRow>
 
-        <View style={wrapperStyle}>
-          <Text>Weight</Text>
+        <FlexRow style={wrapperStyle}>
+          <Text style={informationNameStyle}>Weight</Text>
           <Text style={statStyle}>{`${weightLbs}lbs (${weightKg}kg)`}</Text>
-        </View>
+        </FlexRow>
 
-        <View style={wrapperStyle}>
-          <Text>Abilities</Text>
+        <FlexRow style={wrapperStyle}>
+          <Text style={informationNameStyle}>Abilities</Text>
           <Text style={statStyle}>{info?.abilities.map(({ ability }) => _.startCase(ability.name)).join(', ')}</Text>
-        </View>
+        </FlexRow>
       </InfoSection>
 
       <BreedingSection style={{ width: '65%' }}>
         <Text preset="h5" style={{ marginBottom: 20 }}>Breeding</Text>
 
         <FlexRow style={{ justifyContent: 'space-between', marginBottom: 15 }}>
-          <Text>Gender</Text>
+          <Text style={informationNameStyle}>Gender</Text>
           <Text preset="bold">
             <FontAwesomeIcon icon="mars" color={color.gender.male} style={{ marginRight: 5 }} />
             {`${maleGenderPercentage}%`}
@@ -73,12 +74,12 @@ const PokedexEntryAboutTab = ({ info, species }: PokedexEntryAboutTabProps) => {
           </Text>
         </FlexRow>
 
-        <View style={wrapperStyle}>
-          <Text>Egg Groups</Text>
+        <FlexRow style={wrapperStyle}>
+          <Text style={informationNameStyle}>Egg Groups</Text>
           <Text style={statStyle}>
             {species?.eggGroups?.map(({ name }) => _.capitalize(name)).join(', ')}
           </Text>
-        </View>
+        </FlexRow>
       </BreedingSection>
     </>
   );
